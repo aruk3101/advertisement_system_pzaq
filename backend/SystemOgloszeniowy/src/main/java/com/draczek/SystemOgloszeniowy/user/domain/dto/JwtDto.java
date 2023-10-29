@@ -1,10 +1,13 @@
 package com.draczek.SystemOgloszeniowy.user.domain.dto;
 
 import java.util.Date;
+import lombok.Value;
 
 /**
  * JWT token's dto.
  */
-public record JwtDto(String token, Date expiration) {
-
+@Value
+public class JwtDto {
+  String token;
+  Date expiration;
 }

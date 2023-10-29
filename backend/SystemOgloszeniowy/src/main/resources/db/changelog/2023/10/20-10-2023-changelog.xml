@@ -21,8 +21,6 @@
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="first_name" type="varchar(255)"/>
-            <column name="last_name" type="varchar(255)"/>
             <column name="enabled" type="boolean">
                 <constraints nullable="false" />
             </column>
@@ -60,7 +58,89 @@
         </createIndex>
     </changeSet>
 
-    <changeSet author="draczek" id="20102023-create_table_roles" runOnChange="true">
+    <changeSet author="Damian Raczek" id="20102023-create_table_addresses" runOnChange="true">
+        <createTable tableName="addresses">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="addresses_pkey" nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="city" type="varchar(255)"/>
+            <column name="postal_name" type="varchar(255)"/>
+            <column name="postal_code" type="varchar(10)"/>
+            <column name="street" type="varchar(255)"/>
+            <column name="street_number" type="varchar(10)"/>
+            <column name="apartment_number" type="varchar(10)"/>
+            <column name="country" type="varchar(10)" remarks="Skrót, np. PL, DE"/>
+            <column name="created_date" type="timestamp with time zone"/>
+            <column name="user_id_created" type="bigint">
+                <constraints foreignKeyName="addresses_user_id_created_fkey" references="users(id)"/>
+            </column>
+            <column name="last_modified_date" type="timestamp with time zone"/>
+            <column name="user_id_last_modified" type="bigint">
+                <constraints foreignKeyName="addresses_user_id_last_modified_fkey" references="users(id)"/>
+            </column>
+            <column name="status" type="smallint">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex indexName="addresses_uuid_idx"
+                     schemaName="public"
+                     tableName="addresses"
+                     unique="true">
+            <column name="uuid" />
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Damian Raczek" id="20102023-create_table_accounts" runOnChange="true">
+        <createTable tableName="accounts">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="accounts_pkey" nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="accounts_user_id_fkey" references="users(id)"/>
+            </column>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="birth_date" type="date"/>
+            <column name="phone_number" type="varchar(20)"/>
+            <column name="address_id" type="bigint">
+                <constraints foreignKeyName="accounts_address_id_fkey" references="addresses(id)"/>
+            </column>
+            <column name="profile_picture_source" type="varchar(255)"/>
+            <column name="current_job" type="varchar(3000)" remarks="Aktualne stanowisko pracy + krótki opis zajmowanego stanowiska"/>
+            <column name="career_summary" type="varchar(3000)" remarks="Krótki opis ogólnego doświadczenia zawodowego"/>
+            <column name="created_date" type="timestamp with time zone"/>
+            <column name="user_id_created" type="bigint">
+                <constraints foreignKeyName="accounts_user_id_created_fkey" references="users(id)"/>
+            </column>
+            <column name="last_modified_date" type="timestamp with time zone"/>
+            <column name="user_id_last_modified" type="bigint">
+                <constraints foreignKeyName="accounts_user_id_last_modified_fkey" references="users(id)"/>
+            </column>
+            <column name="status" type="smallint">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex indexName="accounts_uuid_idx"
+                     schemaName="public"
+                     tableName="accounts"
+                     unique="true">
+            <column name="uuid" />
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Damian Raczek" id="20102023-create_table_roles" runOnChange="true">
         <createTable tableName="roles">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="roles_pkey" nullable="false" />
@@ -100,7 +180,7 @@
         </createIndex>
     </changeSet>
 
-    <changeSet author="draczek" id="20102023-create_table_users_roles" runOnChange="true">
+    <changeSet author="Damian Raczek" id="20102023-create_table_users_roles" runOnChange="true">
         <createTable tableName="users_roles">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="users_roles_pkey" nullable="false" />
@@ -122,13 +202,13 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="draczek" id="20102023-create_table_tokens_users_actions" runOnChange="true">
-        <createTable tableName="tokens_users_actions" schemaName="public">
+    <changeSet author="Damian Raczek" id="20102023-create_table_users_actions_tokens" runOnChange="true">
+        <createTable tableName="users_actions_tokens" schemaName="public">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="tokens_users_actions_pkey" nullable="false" />
+                <constraints primaryKey="true" primaryKeyName="users_actions_tokens_pkey" nullable="false" />
             </column>
             <column name="user_id" type="bigint">
-                <constraints foreignKeyName="tokens_users_actions_user_id_fkey" references="users(id)" nullable="false"/>
+                <constraints foreignKeyName="users_actions_tokens_user_id_fkey" references="users(id)" nullable="false"/>
             </column>
             <column name="key" type="varchar(255)">
                 <constraints nullable="false" />
@@ -138,21 +218,21 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="tokens_users_actions_token_key_idx"
+        <createIndex indexName="users_actions_tokens_token_key_idx"
                      schemaName="public"
-                     tableName="tokens_users_actions"
+                     tableName="users_actions_tokens"
                      unique="true">
             <column name="key" />
         </createIndex>
     </changeSet>
 
-    <changeSet author="draczek" id="create_table_tokens_users_actions_history" runOnChange="true">
-        <createTable tableName="tokens_users_actions_history" schemaName="public">
+    <changeSet author="Damian Raczek" id="create_table_users_actions_tokens_history" runOnChange="true">
+        <createTable tableName="users_actions_tokens_history" schemaName="public">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="tokens_users_actions_history_pkey" nullable="false" />
+                <constraints primaryKey="true" primaryKeyName="users_actions_tokens_history_pkey" nullable="false" />
             </column>
             <column name="user_id" type="bigint">
-                <constraints foreignKeyName="tokens_users_actions_history_user_id_fkey" references="users(id)" nullable="false"/>
+                <constraints foreignKeyName="users_actions_tokens_history_user_id_fkey" references="users(id)" nullable="false"/>
             </column>
             <column name="key" type="varchar(255)">
                 <constraints nullable="false" />
@@ -166,13 +246,13 @@
         </createTable>
     </changeSet>
     
-    <changeSet id="draczek" author="20102023-grant_authorities_and_create_uidx">
+    <changeSet id="20102023-grant_authorities_and_create_uidx" author="Damian Raczek">
         <sql>
             GRANT SELECT, UPDATE, INSERT ON TABLE public.users TO user_role;
             GRANT SELECT, UPDATE, INSERT ON TABLE public.users_roles TO user_role;
             GRANT SELECT, UPDATE, INSERT ON TABLE public.roles TO user_role;
-            GRANT SELECT, UPDATE, INSERT, DELETE ON TABLE public.tokens_users_actions TO user_role;
-            GRANT SELECT, UPDATE, INSERT ON TABLE public.tokens_users_actions_history TO user_role;
+            GRANT SELECT, UPDATE, INSERT, DELETE ON TABLE public.users_actions_tokens TO user_role;
+            GRANT SELECT, UPDATE, INSERT ON TABLE public.users_actions_tokens_history TO user_role;
 
             CREATE UNIQUE INDEX users_username_idx ON users (username) WHERE status = 1;
         </sql>

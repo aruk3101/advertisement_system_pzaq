@@ -1,15 +1,22 @@
 package com.draczek.SystemOgloszeniowy.common.dto;
 
-import com.draczek.SystemOgloszeniowy.common.entity.ErrorResponse;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
 /**
  * Default dto for exception handling.
  */
 @Value
-@SuperBuilder
-@EqualsAndHashCode(callSuper = true)
-public class DefaultErrorResponseDto extends ErrorResponse {
+@Builder
+@EqualsAndHashCode
+public class DefaultErrorResponseDto {
+  String title;
+
+  String code;
+
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  LocalDateTime timestamp;
 }

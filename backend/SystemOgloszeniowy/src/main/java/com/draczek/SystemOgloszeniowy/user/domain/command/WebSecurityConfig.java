@@ -29,7 +29,11 @@ import org.springframework.web.filter.CorsFilter;
 public class WebSecurityConfig {
 
   private static final String[] AUTH_WHITELIST = {
-      "/api/users/test",
+      "/api/auth/login",
+      "/api/auth/register",
+      "/api/auth/activate",
+      "/api/auth/reset-password/step-1",
+      "/api/auth/reset-password/step-2",
       "/swagger-resources/**",
       "/swagger-ui*",
       "/swagger-ui/**",
@@ -119,6 +123,7 @@ public class WebSecurityConfig {
     // Allowed origins * is there because it's a school project,
     // and I need to have some flexibility using it.
     // Normally I'd make a property with a front-end server url.
+    config.setAllowCredentials(true);
     config.setAllowedOriginPatterns(Collections.singletonList("*"));
     config.setAllowedMethods(Collections.singletonList("*"));
     config.setAllowedHeaders(Collections.singletonList("*"));

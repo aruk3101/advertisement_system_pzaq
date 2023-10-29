@@ -1,2 +1,3 @@
-id;uuid;username;password_hash;first_name;last_name;enabled;created_date;user_id_created;last_modified_date;user_id_last_modified;status;version
-3;f1273d55-14da-4c3e-b74e-d1ffb181538d;admin@draczek.pl;$2a$10$N3UYqAblcf7of/3BNnCtauEydheifdLDbkSqxcsxcmD8PNpoKKHjC;Damian;Raczek;true;2022-11-29 00:00:00;1;2022-11-29 00:00:00;1;1;0
+id;uuid;username;password_hash;enabled;created_date;user_id_created;last_modified_date;user_id_last_modified;status;version
+2;f1273d55-14da-4c3e-b74e-d1ffb181538d;draczekprojekt@gmail.com;$2a$10$N3UYqAblcf7of/3BNnCtauEydheifdLDbkSqxcsxcmD8PNpoKKHjC;true;2022-11-29 00:00:00;1;2022-11-29 00:00:00;1;1;0
+3;f6fe6282-cb3c-4289-9c1d-b879be9479cc;godzina.wychowawcza12@gmail.com;$2a$10$N3UYqAblcf7of/3BNnCtauEydheifdLDbkSqxcsxcmD8PNpoKKHjC;true;2022-11-29 00:00:00;1;2022-11-29 00:00:00;1;1;0
