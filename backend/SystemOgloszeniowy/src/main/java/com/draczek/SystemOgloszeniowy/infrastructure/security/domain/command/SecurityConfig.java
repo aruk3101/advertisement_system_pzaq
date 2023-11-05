@@ -10,6 +10,12 @@ import org.springframework.context.annotation.Configuration;
 class SecurityConfig {
   @Bean
   SecurityFacade securityFacade() {
-    return new SecurityFacade(new SecurityContextHandler());
+
+    SecurityContextHandler securityContextHandler = new SecurityContextHandler();
+    PasswordValidationHelper passwordValidationHelper = new PasswordValidationHelper();
+
+    return new SecurityFacade(
+        securityContextHandler,
+        passwordValidationHelper);
   }
 }

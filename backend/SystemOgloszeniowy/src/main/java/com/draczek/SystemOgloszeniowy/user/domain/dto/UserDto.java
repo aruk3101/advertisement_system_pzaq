@@ -15,11 +15,7 @@ public class UserDto {
 
   UUID uuid;
 
-  String firstName;
-
-  String lastName;
-
-  boolean account;
+  AccountDto account;
 
   String username;
 

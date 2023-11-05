@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Enum role.
+ * Role enum.
  */
 @Getter
 @RequiredArgsConstructor
 public enum RoleEnum {
-  SUPER_ADMIN("SUPER_ADMIN"),
-  ADMIN("ADMIN"),
-  USER("USER");
+  ROLE_SUPER_ADMIN("ROLE_SUPER_ADMIN"),
+  ROLE_ADMIN("ROLE_ADMIN"),
+  ROLE_USER("ROLE_USER");
 
   private final String value;
 }

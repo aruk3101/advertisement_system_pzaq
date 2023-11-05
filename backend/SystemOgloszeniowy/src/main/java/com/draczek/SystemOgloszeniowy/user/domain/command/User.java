@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -51,12 +53,8 @@ public class User extends AuditableEntity {
   private UUID uuid;
 
   @NotNull
-  @Column(nullable = false, unique = true)
-  private String firstName;
-
-  @NotNull
-  @Column(nullable = false, unique = true)
-  private String lastName;
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  private Account account;
 
   @NotNull
   @Column(nullable = false)

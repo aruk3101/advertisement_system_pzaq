@@ -6,7 +6,9 @@ import static com.draczek.SystemOgloszeniowy.user.domain.command.WebSecurityAuth
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import java.util.Arrays;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,10 +28,12 @@ public class SwaggerConfiguration {
     // config Swaggera, z dodanym sposobem autentykacji Bearer JWT, api key,
     // przekazywany w HEADER jako flaga AUTHORIZATION z dodanym tytułem
     return new OpenAPI()
-        .components(new Components().addSecuritySchemes("Bearer Authentication",
+        .components(new Components().addSecuritySchemes(BEARER + "-jwt",
             new SecurityScheme().type(SecurityScheme.Type.APIKEY).scheme(BEARER)
-                .bearerFormat("JWTs")
+                .bearerFormat("JWT")
                 .in(SecurityScheme.In.HEADER).name(AUTHORIZATION)))
-        .info(new Info().title("Projekt szkolny na PZAW Damian Raczek ®"));
+        .info(new Info().title("Projekt szkolny na PZAW Damian Raczek ®"))
+        .addSecurityItem(new SecurityRequirement().addList(BEARER + "-jwt",
+            Arrays.asList("read", "write")));
   }
 }
