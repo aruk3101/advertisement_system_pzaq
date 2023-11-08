@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
  * Class for stuff related to deleting UserActionToken entities.
  */
 @RequiredArgsConstructor
-public class DeleteUserActionTokenUseCase {
+class DeleteUserActionTokenUseCase {
   private final UserActionTokenRepository userActionTokenRepository;
   private final UserActionTokenHistoryRepository userActionTokenHistoryRepository;
 

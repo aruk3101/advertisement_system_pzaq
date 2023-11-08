@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * UserActionToken facade's repository.
  */
 @Repository
-public interface UserActionTokenRepository extends JpaRepository<UserActionToken, Long> {
+interface UserActionTokenRepository extends JpaRepository<UserActionToken, Long> {
   Optional<UserActionToken> findByKey(String key);
 
   /**

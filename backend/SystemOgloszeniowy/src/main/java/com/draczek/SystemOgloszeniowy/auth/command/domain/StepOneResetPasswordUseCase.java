@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
  * Class for stuff related do step one of password reset process.
  */
 @RequiredArgsConstructor
-public class StepOneResetPasswordUseCase {
+class StepOneResetPasswordUseCase {
   private final UserFacade userFacade;
   private final UserActionTokenFacade userActionTokenFacade;
   private final SendMailUseCase sendMailUseCase;

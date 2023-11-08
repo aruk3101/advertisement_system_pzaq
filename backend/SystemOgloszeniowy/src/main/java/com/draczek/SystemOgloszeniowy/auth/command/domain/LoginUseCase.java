@@ -19,7 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * Class for logging in the user.
  */
 @RequiredArgsConstructor
-public class LoginUseCase {
+class LoginUseCase {
   private final JwtUtils jwtUtils;
   private final AuthenticationManager authenticationManager;
 

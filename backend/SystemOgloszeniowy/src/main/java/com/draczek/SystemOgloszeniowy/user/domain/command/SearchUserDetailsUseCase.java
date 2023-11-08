@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service("userDetailsService")
-public class SearchUserDetailsUseCase implements UserDetailsService {
+class SearchUserDetailsUseCase implements UserDetailsService {
 
   private final UserRepository userRepository;
   private final UserMapper userMapper;

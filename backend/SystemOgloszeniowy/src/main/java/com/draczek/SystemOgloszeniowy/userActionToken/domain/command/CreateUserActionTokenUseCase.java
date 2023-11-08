@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Class for stuff related to creating new user action tokens.
  */
 @RequiredArgsConstructor
-public class CreateUserActionTokenUseCase {
+class CreateUserActionTokenUseCase {
 
   private final PasswordEncoder passwordEncoder;
   private final UserActionTokenRepository userActionTokenRepository;

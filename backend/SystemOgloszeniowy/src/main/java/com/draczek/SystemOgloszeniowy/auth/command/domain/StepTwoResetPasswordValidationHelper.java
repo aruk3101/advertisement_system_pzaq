@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  * Helper class for StepTwoPasswordResetDto validation.
  */
 @RequiredArgsConstructor
-public class StepTwoResetPasswordValidationHelper {
+class StepTwoResetPasswordValidationHelper {
   private final SecurityFacade securityFacade;
 
   /**

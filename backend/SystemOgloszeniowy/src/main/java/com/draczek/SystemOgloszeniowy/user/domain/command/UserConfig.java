@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Config class for UserFacade.
  */
 @Configuration
-public class UserConfig {
+class UserConfig {
 
   @Bean
   UserFacade userFacade(

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
  * Class related to creating Users.
  */
 @RequiredArgsConstructor
-public class CreateUserUseCase {
+class CreateUserUseCase {
   private final UserRepository userRepository;
 
   /**

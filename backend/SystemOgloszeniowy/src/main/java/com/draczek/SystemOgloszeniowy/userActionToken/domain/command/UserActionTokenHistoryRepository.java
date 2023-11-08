@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
  * UserActionTokenHistory repository.
  */
 @Repository
-public interface UserActionTokenHistoryRepository
+interface UserActionTokenHistoryRepository
     extends JpaRepository<UserActionTokenHistory, Long> {
 }

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class WebSecurityAuthEntryPointJwt implements AuthenticationEntryPoint {
+class WebSecurityAuthEntryPointJwt implements AuthenticationEntryPoint {
 
   /**
    * Custom implementation of authorization exception managing.

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * UserActionToken Facade's config class.
  */
 @Configuration
-public class UserActionTokenConfig {
+class UserActionTokenConfig {
   @Bean
   UserActionTokenFacade userActionTokenFacade(
       PasswordEncoder passwordEncoder,

@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
  * Class for stuff related to sending mails.
  */
 @RequiredArgsConstructor
-public class SendMailUseCase {
+class SendMailUseCase {
 
   private final JavaMailSender emailSender;
 

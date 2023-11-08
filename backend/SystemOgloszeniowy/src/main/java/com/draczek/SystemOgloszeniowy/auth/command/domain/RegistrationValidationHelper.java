@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
  * Helper class for Registration data validation.
  */
 @RequiredArgsConstructor
-public class RegistrationValidationHelper {
+class RegistrationValidationHelper {
   private final SecurityFacade securityFacade;
   private final UserFacade userFacade;
 

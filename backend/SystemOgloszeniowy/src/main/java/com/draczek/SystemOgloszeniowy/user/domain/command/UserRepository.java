@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Repository User.
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>,
+interface UserRepository extends JpaRepository<User, Long>,
     JpaSpecificationExecutor<User> {
 
   Optional<User> findOneByUsernameAndStatus(String username, StatusEnum status);

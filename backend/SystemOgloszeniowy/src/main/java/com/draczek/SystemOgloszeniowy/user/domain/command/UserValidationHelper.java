@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  * Helper class for User validation.
  */
 @RequiredArgsConstructor
-public class UserValidationHelper {
+class UserValidationHelper {
   private final UserRepository userRepository;
 
   /**

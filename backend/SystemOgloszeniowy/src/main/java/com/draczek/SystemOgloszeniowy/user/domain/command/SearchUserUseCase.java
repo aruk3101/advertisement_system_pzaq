@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * Class for searching User's related data.
  */
 @RequiredArgsConstructor
-public class SearchUserUseCase {
+class SearchUserUseCase {
   private final UserRepository userRepository;
   private final UserMapper userMapper;
   private final SecurityFacade securityFacade;

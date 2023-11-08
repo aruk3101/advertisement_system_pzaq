@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
  * Class for stuff related to searching UserActionToken entities.
  */
 @RequiredArgsConstructor
-public class SearchUserActionTokenUseCase {
+class SearchUserActionTokenUseCase {
   private final UserActionTokenRepository userActionTokenRepository;
   private final UserActionTokenValidationHelper validationHelper;
 

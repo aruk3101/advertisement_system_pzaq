@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * Class for UserActionToken validation.
  */
 @RequiredArgsConstructor
-public class UserActionTokenValidationHelper {
+class UserActionTokenValidationHelper {
 
   /**
    * Helper method for validation of UserActionToken.

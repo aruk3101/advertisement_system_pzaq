@@ -48,7 +48,7 @@ public class UserFacade {
    * @param user User instance to save
    * @return saved user
    */
-  public User save(User user) {
+  public User save(@NotNull User user) {
     return createUserUseCase.save(user);
   }
 

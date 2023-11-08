@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Class for stuff related to updating User entity.
  */
 @RequiredArgsConstructor
-public class UpdateUserUseCase {
+class UpdateUserUseCase {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
 

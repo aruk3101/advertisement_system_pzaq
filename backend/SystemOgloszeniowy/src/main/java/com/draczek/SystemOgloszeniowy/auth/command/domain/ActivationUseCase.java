@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  * Class for activation of new, inactive user.
  */
 @RequiredArgsConstructor
-public class ActivationUseCase {
+class ActivationUseCase {
 
   private final UserActionTokenFacade userActionTokenFacade;
   private final UserFacade userFacade;

@@ -32,7 +32,7 @@ public class AuthenticationFacade {
    * @param dto LoginDto
    * @return User authentication token dto
    */
-  public UserTokenDto login(@Valid @NotNull LoginDto dto) {
+  public UserTokenDto login(@NotNull LoginDto dto) {
     return loginUseCase.login(dto);
   }
 
@@ -41,7 +41,7 @@ public class AuthenticationFacade {
    *
    * @param dto RegistrationDto
    */
-  public void register(@Valid @NotNull RegistrationDto dto) {
+  public void register(@NotNull RegistrationDto dto) {
     registrationUseCase.registration(dto);
   }
 
@@ -50,7 +50,7 @@ public class AuthenticationFacade {
    *
    * @param token token key
    */
-  public void activate(String token) {
+  public void activate(@NotBlank String token) {
     activationUseCase.activate(token);
   }
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * Role repository.
  */
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
+interface RoleRepository extends JpaRepository<Role, Long> {
   Optional<Role> findByName(RoleEnum name);
 
   /**

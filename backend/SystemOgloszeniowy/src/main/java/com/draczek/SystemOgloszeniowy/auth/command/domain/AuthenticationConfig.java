@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Authentication Facade's config class.
  */
 @Configuration
-public class AuthenticationConfig {
+class AuthenticationConfig {
   @Bean
   AuthenticationFacade authenticationFacade(
       AuthenticationManager authenticationManager,

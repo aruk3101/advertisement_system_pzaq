@@ -26,7 +26,7 @@ import org.springframework.web.filter.CorsFilter;
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig {
+class WebSecurityConfig {
 
   private static final String[] AUTH_WHITELIST = {
       "/api/auth/login",

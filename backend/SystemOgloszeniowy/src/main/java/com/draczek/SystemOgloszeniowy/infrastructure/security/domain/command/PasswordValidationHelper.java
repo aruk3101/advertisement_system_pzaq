@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  * Helper class for password validation.
  */
 @RequiredArgsConstructor
-public class PasswordValidationHelper {
+class PasswordValidationHelper {
 
   /**
    * Helper method for password validation.

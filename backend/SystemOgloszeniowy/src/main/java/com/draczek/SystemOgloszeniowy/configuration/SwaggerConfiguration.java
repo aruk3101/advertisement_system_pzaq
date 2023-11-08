@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * Swagger's config.
  */
 @Configuration
-public class SwaggerConfiguration {
+class SwaggerConfiguration {
 
   /**
    * Bean of Swagger's OpenApi Config.

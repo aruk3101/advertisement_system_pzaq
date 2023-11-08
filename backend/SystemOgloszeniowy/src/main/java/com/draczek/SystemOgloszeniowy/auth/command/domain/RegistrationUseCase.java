@@ -22,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Class for user registration related actions.
  */
 @RequiredArgsConstructor
-public class RegistrationUseCase {
+class RegistrationUseCase {
 
   private final RegistrationValidationHelper validationHelper;
   private final PasswordEncoder passwordEncoder;

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
  * Class for fetching roles.
  */
 @RequiredArgsConstructor
-public class SearchRoleUseCase {
+class SearchRoleUseCase {
   private final RoleRepository roleRepository;
 
   /**

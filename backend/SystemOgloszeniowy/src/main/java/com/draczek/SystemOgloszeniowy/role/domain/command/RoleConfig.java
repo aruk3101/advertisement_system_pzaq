@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * Role's facade config class.
  */
 @Configuration
-public class RoleConfig {
+class RoleConfig {
   @Bean
   RoleFacade roleFacade(RoleRepository roleRepository) {
     SearchRoleUseCase searchRoleUseCase = new SearchRoleUseCase(roleRepository);
