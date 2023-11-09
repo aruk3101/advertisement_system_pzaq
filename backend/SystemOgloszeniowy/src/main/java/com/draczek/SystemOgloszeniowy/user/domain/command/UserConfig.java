@@ -1,5 +1,7 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.common.FileStorageService;
+import com.draczek.SystemOgloszeniowy.common.FileUploadValidator;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +18,8 @@ class UserConfig {
   UserFacade userFacade(
       UserRepository userRepository,
       SecurityFacade securityFacade,
-      PasswordEncoder passwordEncoder) {
+      PasswordEncoder passwordEncoder,
+      FileStorageService fileStorageService) {
     UserMapper userMapper = Mappers.getMapper(UserMapper.class);
     SearchUserUseCase searchUserUseCase = new SearchUserUseCase(userRepository,
         userMapper,
@@ -26,9 +29,17 @@ class UserConfig {
 
     UserValidationHelper userValidationHelper = new UserValidationHelper(userRepository);
 
+    FileUploadValidator fileUploadValidator = new FileUploadValidator();
+    UpdateUserValidationHelper updateUserValidationHelper
+        = new UpdateUserValidationHelper(fileUploadValidator);
+
     UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
         userRepository,
-        passwordEncoder);
+        passwordEncoder,
+        securityFacade,
+        userMapper,
+        updateUserValidationHelper,
+        fileStorageService);
 
     return new UserFacade(
         searchUserUseCase,

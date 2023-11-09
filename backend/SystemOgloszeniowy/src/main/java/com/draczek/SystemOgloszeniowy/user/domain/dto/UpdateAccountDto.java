@@ -1,25 +1,24 @@
 package com.draczek.SystemOgloszeniowy.user.domain.dto;
 
-import com.draczek.SystemOgloszeniowy.address.domain.dto.AddressDto;
+import com.draczek.SystemOgloszeniowy.address.domain.dto.UpdateAddressDto;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import lombok.Value;
 
 /**
- * Account dto.
+ * Update Account dto.
  */
 @Value
-public class AccountDto {
+public class UpdateAccountDto {
   String firstName;
 
   String lastName;
+
   Date birthDate;
 
   String phoneNumber;
 
-  AddressDto address;
-
-  String profilePictureSource;
+  UpdateAddressDto updateAddressDto;
 
   @NotNull
   Integer version;

@@ -1,9 +1,16 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
+import com.draczek.SystemOgloszeniowy.address.domain.dto.UpdateAddressDto;
+import com.draczek.SystemOgloszeniowy.common.FileStorageService;
 import com.draczek.SystemOgloszeniowy.common.enumerated.StatusEnum;
+import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
+import com.draczek.SystemOgloszeniowy.user.domain.dto.UpdateAccountDto;
+import com.draczek.SystemOgloszeniowy.user.domain.dto.UserDto;
 import com.draczek.SystemOgloszeniowy.user.domain.enumerated.SystemUserIdEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Class for stuff related to updating User entity.
@@ -12,6 +19,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 class UpdateUserUseCase {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
+  private final SecurityFacade securityFacade;
+  private final UserMapper userMapper;
+  private final UpdateUserValidationHelper updateUserValidationHelper;
+  private final FileStorageService fileStorageService;
 
   /**
    * Method for changing User's status to active.
@@ -38,5 +49,82 @@ class UpdateUserUseCase {
     user.setPassword(passwordEncoder.encode(password));
     user.setUserIdLastModified(user.getId());
     userRepository.saveAndFlush(user);
+  }
+
+  /**
+   * Method for changing user's account data.
+   *
+   * @param dto UpdateAccountDto
+   * @return changed UserDto
+   */
+  public UserDto update(UpdateAccountDto dto) {
+    return updateUserAccount(dto);
+  }
+
+  /**
+   * Method for changing user account's profile picture.
+   *
+   * @param multipartFile new profile picture
+   * @return UserDto
+   */
+  public UserDto update(MultipartFile multipartFile) {
+    updateUserValidationHelper.validate(multipartFile);
+    User user = securityFacade.getLoggedInUser().getUserDetails();
+
+    String oldPfp = user.getAccount().getProfilePictureSource();
+    try {
+      fileStorageService.deleteFileIfExists(oldPfp);
+    } catch (Exception e) {
+      throw new RuntimeException("Unexpected error, while deleting old profile picture.");
+    }
+
+    user.getAccount().setProfilePictureSource(
+        fileStorageService.storeFile(multipartFile,
+            User.class,
+            user.getId().intValue()));
+    userRepository.saveAndFlush(user);
+    return userMapper.toDto(user);
+  }
+
+  private UserDto updateUserAccount(UpdateAccountDto dto) {
+    User user = securityFacade.getLoggedInUser().getUserDetails();
+    user.getAccount().setFirstName(dto.getFirstName());
+    user.getAccount().setLastName(dto.getLastName());
+    user.getAccount().setBirthDate(dto.getBirthDate());
+    user.getAccount().setPhoneNumber(dto.getPhoneNumber());
+    user.getAccount().setAddress(updateAddress(user.getAccount().getAddress(),
+        dto.getUpdateAddressDto()));
+    user.getAccount().setVersion(dto.getVersion());
+    return userMapper.toDto(userRepository.saveAndFlush(user));
+  }
+
+  private Address updateAddress(Address address, UpdateAddressDto dto) {
+    address.setCity(dto.getCity());
+    address.setPostalName(dto.getPostalName());
+    address.setPostalCode(dto.getPostalCode());
+    address.setStreet(dto.getStreet());
+    address.setStreetNumber(dto.getStreetNumber());
+    address.setApartmentNumber(dto.getApartmentNumber());
+    address.setCountry(dto.getCountry());
+    address.setVersion(dto.getVersion());
+    return address;
+  }
+
+  /**
+   * Method for logged-in user's profile picture deletion.
+   *
+   * @return UserDto
+   */
+  public UserDto deleteProfilePicture() {
+    User user = securityFacade.getLoggedInUser().getUserDetails();
+    try {
+      fileStorageService.deleteFileIfExists(user.getAccount().getProfilePictureSource());
+    } catch (Exception exception) {
+      throw new RuntimeException("Unexpected error during profile picture deletion."
+          + " Please contact service provider.");
+    }
+    user.getAccount().setProfilePictureSource(null);
+    userRepository.save(user);
+    return userMapper.toDto(user);
   }
 }

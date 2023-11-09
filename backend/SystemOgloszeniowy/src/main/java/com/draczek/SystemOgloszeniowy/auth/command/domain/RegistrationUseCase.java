@@ -45,6 +45,7 @@ class RegistrationUseCase {
   }
 
   private User createUser(RegistrationDto dto) {
+    //TODO przenieść to do UserFacade
     User user = User.builder()
         .uuid(UUID.randomUUID())
         .enabled(false)

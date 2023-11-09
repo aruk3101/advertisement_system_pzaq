@@ -2,6 +2,7 @@ package com.draczek.SystemOgloszeniowy.user.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.dto.ViolationDto;
 import com.draczek.SystemOgloszeniowy.common.enumerated.StatusEnum;
+import com.draczek.SystemOgloszeniowy.user.domain.dto.UpdateAccountDto;
 import com.draczek.SystemOgloszeniowy.user.domain.dto.UserDto;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * User's package facade.
@@ -90,5 +92,23 @@ public class UserFacade {
    */
   public void changePassword(@NotNull User user, @NotBlank String password) {
     updateUserUseCase.changePassword(user, password);
+  }
+
+  /**
+   * Method for changing user's account data.
+   *
+   * @param dto           UpdateAccountDto
+   * @return UserDto
+   */
+  public UserDto update(@NotNull UpdateAccountDto dto) {
+    return updateUserUseCase.update(dto);
+  }
+
+  public UserDto update(@NotNull MultipartFile multipartFile) {
+    return updateUserUseCase.update(multipartFile);
+  }
+
+  public UserDto deleteProfilePicture() {
+    return updateUserUseCase.deleteProfilePicture();
   }
 }

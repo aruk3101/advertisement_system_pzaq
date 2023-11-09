@@ -29,6 +29,7 @@ import org.springframework.web.filter.CorsFilter;
 class WebSecurityConfig {
 
   private static final String[] AUTH_WHITELIST = {
+      "/upload/**",
       "/api/auth/login",
       "/api/auth/register",
       "/api/auth/activate",

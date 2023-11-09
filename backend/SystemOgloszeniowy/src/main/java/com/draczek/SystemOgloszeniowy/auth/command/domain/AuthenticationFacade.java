@@ -5,7 +5,6 @@ import com.draczek.SystemOgloszeniowy.auth.command.dto.RegistrationDto;
 import com.draczek.SystemOgloszeniowy.auth.command.dto.ResetPasswordStepTwoDto;
 import com.draczek.SystemOgloszeniowy.user.domain.dto.UserTokenDto;
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
