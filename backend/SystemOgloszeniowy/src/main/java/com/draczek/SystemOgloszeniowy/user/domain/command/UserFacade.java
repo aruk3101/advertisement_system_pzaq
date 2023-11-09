@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.auth.command.dto.RegistrationDto;
 import com.draczek.SystemOgloszeniowy.common.dto.ViolationDto;
 import com.draczek.SystemOgloszeniowy.common.enumerated.StatusEnum;
 import com.draczek.SystemOgloszeniowy.user.domain.dto.UpdateAccountDto;
@@ -45,13 +46,13 @@ public class UserFacade {
   }
 
   /**
-   * Method for saving the user in the database.
+   * Method for creating new user.
    *
-   * @param user User instance to save
-   * @return saved user
+   * @param registrationDto RegistrationDto
+   * @return created User instance.
    */
-  public User save(@NotNull User user) {
-    return createUserUseCase.save(user);
+  public User create(@NotNull RegistrationDto registrationDto) {
+    return createUserUseCase.create(registrationDto);
   }
 
   /**

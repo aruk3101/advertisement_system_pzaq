@@ -20,8 +20,6 @@ class AuthenticationConfig {
   AuthenticationFacade authenticationFacade(
       AuthenticationManager authenticationManager,
       JwtUtils jwtUtils,
-      PasswordEncoder passwordEncoder,
-      RoleFacade roleFacade,
       UserFacade userFacade,
       UserActionTokenFacade userActionTokenFacade,
       JavaMailSender emailSender,
@@ -38,8 +36,6 @@ class AuthenticationConfig {
         userFacade);
     RegistrationUseCase registrationUseCase = new RegistrationUseCase(
         registrationValidationHelper,
-        passwordEncoder,
-        roleFacade,
         userFacade,
         userActionTokenFacade,
         sendMailUseCase);
