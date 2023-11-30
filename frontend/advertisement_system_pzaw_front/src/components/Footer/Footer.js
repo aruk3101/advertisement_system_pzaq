@@ -4,8 +4,9 @@ import { Link } from "react-router-dom"
 
 function Footer(props) {
   return (
-    <>
-      <div className={'row bg-secondary w-100 g-0' + (props.className ?? "")}> 
+    <div className={'bg-secondary ' + (props.className ?? "")}>
+      <div className='container-md'>
+      <div className={'row  w-100 g-0 '}> 
         <div className='col d-flex flex-column flex-md-row g-md-4 justify-content-center'>
           <Column id="footer-1" header="Header">
             <Link to="#">Some link</Link>
@@ -34,11 +35,13 @@ function Footer(props) {
         </div>
       </div>
       <div className='row g-0'>
-        <div className="text-center g-0 p-3 bg-secondary bg-gradient">
+        <div className="text-center g-0 p-3">
           Wykonano przez : Damian Raczek ®    
         </div>
       </div>
-    </>
+      </div>
+      
+    </div>
   );
 }
 

@@ -1,0 +1,6 @@
+.home-end{
+    min-height: 400px;
+    background-image: url("../../../public/img/landing-page-img.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+}
