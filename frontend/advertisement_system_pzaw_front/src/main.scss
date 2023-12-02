@@ -1,5 +1,24 @@
 $primary:#427D9D;
 $secondary:#9BBEC8;
+// nadpisuje kolory bootstrapowe
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/utilities";
 
 
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": map-merge(
+      map-get($utilities, "font-size"),
+    (responsive: true),
+    ),
+  )
+); /* Dodaje responsywność do klas fs-n, czyli m.in. fs-lg-1, fs-md-1, itd.*/
+
+@import "bootstrap/scss/utilities/api";
 @import "bootstrap/scss/bootstrap";
