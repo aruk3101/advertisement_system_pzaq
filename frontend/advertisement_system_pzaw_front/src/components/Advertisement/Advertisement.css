@@ -1,0 +1,17 @@
+:root{
+    --custom_color:#0dcaf0;
+    --custom_color_dark:#098faa;
+}
+
+.border-custom{
+    border-color: var(--custom_color) !important;
+}
+.border-custom-dark{
+    border-color: var(--custom_color_dark) !important;
+}
+.bg-custom{
+    background-color: var(--custom_color);
+}
+.bg-custom-dark{
+    background-color: var(--custom_color_dark);
+}

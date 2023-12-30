@@ -1,0 +1,25 @@
+.banner{
+    height: 200px;
+}
+.pfp{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.banner-icons{
+    left: auto;
+    right: 0;
+    top: 100%;
+}
+
+@media (min-width: 768px) { 
+    .pfp{
+        top: 30%;
+        left: auto;
+        right: 0;
+        transform: translate(-10%, 0);
+    }
+    .banner-icons{
+        left: 0;
+    }
+}
