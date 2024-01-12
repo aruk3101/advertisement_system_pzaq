@@ -1,11 +1,11 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../Layout/Layout";
-import Profile from "../Profile/Profile"
-import AdvertisementList from "../AdvertisementsList/AdvertisementsList"
-import Home from "../Home/Home"
-import NotFoundPage from "../NotFoundPage/NotFoundPage"
-import Advertisement from "../Advertisement/Advertisement"
+import Layout from "components/Layout/Layout";
+import Profile from "components/Profile/Profile"
+import AdvertisementList from "components/AdvertisementsList/AdvertisementsList"
+import Home from "components/Home/Home"
+import NotFoundPage from "components/NotFoundPage/NotFoundPage"
+import Advertisement from "components/Advertisement/Advertisement"
 
 function App() {
   return (

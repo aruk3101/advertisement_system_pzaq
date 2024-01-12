@@ -1,5 +1,4 @@
 import './Home.css';
-import { memo } from 'react';
 
 function Home() {
   

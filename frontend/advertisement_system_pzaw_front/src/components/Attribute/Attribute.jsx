@@ -1,5 +1,5 @@
 import './Attribute.css';
-import "../../css/fonts.css";
+import "assets/css/fonts.css";
 
 function Attribute(props) {
     return(

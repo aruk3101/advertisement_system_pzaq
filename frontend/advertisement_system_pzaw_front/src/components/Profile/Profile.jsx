@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Profile.css';
-import Card from "../Card/Card"
-import InputGroup from '../InputGroup/InputGroup'
-import Nav from "../Nav/Nav";
-import '../../css/fonts.css'
-import '../../css/profilePicture.css'
+import Card from "components/Card/Card"
+import InputGroup from 'components/InputGroup/InputGroup'
+import Nav from "components/Nav/Nav";
+import 'assets/css/fonts.css'
+import 'assets/css/profilePicture.css'
 
 function Profile() {
 

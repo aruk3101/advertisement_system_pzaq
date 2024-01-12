@@ -1,10 +1,10 @@
 import './Advertisement.css';
 import { useParams } from 'react-router-dom';
-import Card from '../Card/Card';
-import Nav from '../Nav/Nav';
-import '../../css/fonts.css'
-import Attribute from '../Attribute/Attribute';
-import '../../css/profilePicture.css'
+import Card from 'components/Card/Card';
+import Nav from 'components/Nav/Nav';
+import 'assets/css/fonts.css'
+import Attribute from 'components/Attribute/Attribute';
+import 'assets/css/profilePicture.css'
 import { Link } from 'react-router-dom';
 
 function Advertisement() {
