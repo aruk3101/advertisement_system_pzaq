@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "components/Layout/Layout";
+import Layout from "components/Layout/Layout/Layout";
 import Profile from "pages/Profile/Profile"
 import AdvertisementList from "pages/AdvertisementsList/AdvertisementsList"
 import Home from "pages/Home/Home"
