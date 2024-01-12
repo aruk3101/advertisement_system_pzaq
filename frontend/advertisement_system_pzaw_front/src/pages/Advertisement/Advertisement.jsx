@@ -1,9 +1,9 @@
 import './Advertisement.css';
 import { useParams } from 'react-router-dom';
-import Card from 'components/Card/Card';
-import Nav from 'components/Nav/Nav';
+import Card from 'components/common/Card/Card';
+import Nav from 'components/common/Nav/Nav';
 import 'assets/css/fonts.css'
-import Attribute from 'components/Attribute/Attribute';
+import Attribute from 'components/common/Attribute/Attribute';
 import 'assets/css/profilePicture.css'
 import { Link } from 'react-router-dom';
 import defaultCompanyIcon from "assets/images/defaultCompanyPfp.png"

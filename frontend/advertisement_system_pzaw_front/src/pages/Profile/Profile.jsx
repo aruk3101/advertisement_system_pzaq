@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Profile.css';
-import Card from "components/Card/Card"
-import InputGroup from 'components/InputGroup/InputGroup'
-import Nav from "components/Nav/Nav";
+import Card from "components/common/Card/Card"
+import InputGroup from 'components/common/InputGroup/InputGroup'
+import Nav from "components/common/Nav/Nav";
 import 'assets/css/fonts.css'
 import 'assets/css/profilePicture.css'
 import defaultPfpIcon from "assets/images/defaultPfp.webp"
