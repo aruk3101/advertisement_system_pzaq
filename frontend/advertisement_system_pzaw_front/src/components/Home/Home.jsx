@@ -1,4 +1,6 @@
 import './Home.css';
+import defaultCompanyIcon from "assets/images/defaultCompanyPfp.png";
+import landingPageImg2 from "assets/images/landing-page-img-2.png";
 
 function Home() {
   
@@ -7,7 +9,7 @@ function Home() {
       index:0,
       position:"Position",
       company:{
-        imgSrc:"/img/defaultCompanyPfp.png",
+        imgSrc:defaultCompanyIcon,
         name:"Company name"
       },
       category:"Category",
@@ -22,7 +24,7 @@ function Home() {
       index:1,
       position:"Position",
       company:{
-        imgSrc:"/img/defaultCompanyPfp.png",
+        imgSrc:defaultCompanyIcon,
         name:"Company name"
       },
       category:"Category",
@@ -37,7 +39,7 @@ function Home() {
       index:2,
       position:"Position",
       company:{
-        imgSrc:"/img/defaultCompanyPfp.png",
+        imgSrc:defaultCompanyIcon,
         name:"Company name"
       },
       category:"Category",
@@ -52,7 +54,7 @@ function Home() {
       index:3,
       position:"Position",
       company:{
-        imgSrc:"/img/defaultCompanyPfp.png",
+        imgSrc:defaultCompanyIcon,
         name:"Company name"
       },
       category:"Category",
@@ -87,7 +89,7 @@ function Home() {
               </h5> 
             </div>
             <div className='col-0 col-md-5 '>
-              <img className='d-none d-md-block img-fluid mx-auto d-block' src='img/landing-page-img-2.png'/>
+              <img className='d-none d-md-block img-fluid mx-auto d-block' src={landingPageImg2}/>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import 'assets/css/fonts.css'
 import Attribute from 'components/Attribute/Attribute';
 import 'assets/css/profilePicture.css'
 import { Link } from 'react-router-dom';
+import defaultCompanyIcon from "assets/images/defaultCompanyPfp.png"
 
 function Advertisement() {
     let { id } = useParams();
@@ -92,7 +93,7 @@ function Advertisement() {
                  </svg>
                 }/>
               </div>
-              <img src='/img/defaultCompanyPfp.png' className='object-fit-cover rounded-circle border border-5 border-custom-dark position-absolute pfp bg-custom' width={200} height={200}/>
+              <img src= {defaultCompanyIcon} className='object-fit-cover rounded-circle border border-5 border-custom-dark position-absolute pfp bg-custom' width={200} height={200}/>
             </div>
           }>
             <span>

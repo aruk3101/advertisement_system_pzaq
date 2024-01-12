@@ -5,6 +5,7 @@ import InputGroup from 'components/InputGroup/InputGroup'
 import Nav from "components/Nav/Nav";
 import 'assets/css/fonts.css'
 import 'assets/css/profilePicture.css'
+import defaultPfpIcon from "assets/images/defaultPfp.webp"
 
 function Profile() {
 
@@ -15,7 +16,7 @@ function Profile() {
         <div className='col-12 col-xl-9'>
           <Card header = "Imie Nazwisko" beforeContent = {
             <div className=' banner position-relative bg-info rounded-top'>
-              <img src='/img/defaultPfp.webp' className='object-fit-cover rounded-circle border border-5 border-info position-absolute pfp' width={200} height={200}/>
+              <img src={defaultPfpIcon} className='object-fit-cover rounded-circle border border-5 border-info position-absolute pfp' width={200} height={200}/>
             </div>
           }>
             <span>
@@ -172,8 +173,6 @@ function Profile() {
                 })
               }
             </ul>
-          </Card>
-          <Card>
           </Card>
           
         </div>        
