@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import logoNoBackground from "assets/images/logo/logo-no-background.svg"
 import SearchBar from 'components/common/SearchBar/SearchBar';
+import MyAccountDrodown from '../MyAccountDropdown/MyAccountDropdown';
 
 function Header(props) {
   return (
@@ -27,27 +28,9 @@ function Header(props) {
             </li>
           </ul>
           <SearchBar/>
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Moje konto
-              </a>
-              <ul class="dropdown-menu mb-2 mb-lg-0">
-                <li><a className="dropdown-item" href="#">Profil Użytkownika</a></li>
-                <li><a className="dropdown-item" href="#">Ulubione</a></li>
-                <li><a className="dropdown-item" href="#">Aplikacje</a></li>
-                <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#">Wyloguj</a></li>
-              </ul>
-            </li> 
-          </ul>
+          <MyAccountDrodown/>
         </div>
       </div>
-       {/* <div className={"bg-primary p-2 " + props.className}>
-      <div className='container-md'>
-      
-      </div>
-    </div> */}
     </nav>
    
   );
