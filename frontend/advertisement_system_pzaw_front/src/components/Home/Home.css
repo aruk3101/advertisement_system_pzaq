@@ -1,9 +1,0 @@
-.home-end{
-    min-height: 400px;
-    background-image: url("../../../public/img/landing-page-img.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-}
-button[type=submit]{
-    width: 48px; /*48 - wysokość z form-control-lg */
-}
