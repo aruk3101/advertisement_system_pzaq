@@ -1,6 +1,6 @@
 import {request} from "./AxiosService";
 
-const BASE_URL = "http://localhost:8080/api/auth/";
+const BASE_URL = "auth/";
 
 function combine(url){
     return BASE_URL + url;
