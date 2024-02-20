@@ -1,11 +1,7 @@
-import './AdvertisementsList.css';
+import "./AdvertisementsList.css";
 
 function AdvertisementsList() {
-  return (
-    <div>
-      AdvertisementsList
-    </div>
-  );
+  return <div>AdvertisementsList</div>;
 }
 
 export default AdvertisementsList;
