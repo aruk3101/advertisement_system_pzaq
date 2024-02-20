@@ -1,7 +1,8 @@
-package com.draczek.SystemOgloszeniowy.accountLink.domain.command;
+package com.draczek.SystemOgloszeniowy.accountSkill.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 /**
- * AccountLink entity.
+ * AccountSkill entity.
  */
 @Entity
 @Getter
@@ -31,8 +32,8 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
-@Table(name = "accounts_links")
-public class AccountLink extends AuditableEntity {
+@Table(name = "accounts_skills")
+public class AccountSkill extends AuditableEntity {
 
   @Id
   @Column(nullable = false, updatable = false)
@@ -49,10 +50,7 @@ public class AccountLink extends AuditableEntity {
   private Account account;
 
   @NotNull
-  private String name;
-
-  @NotNull
-  private String hyperlink;
+  private String skillName;
 
   /**
    * Version setter.
