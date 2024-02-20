@@ -1,9 +1,10 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountLink.domain.command.AccountLink;
 import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.exception.UserOptimisticLockException;
-import com.draczek.SystemOgloszeniowy.userCertificates.domain.AccountCertificate;
+import com.draczek.SystemOgloszeniowy.accountCertificate.domain.AccountCertificate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -71,6 +72,9 @@ public class Account extends AuditableEntity {
 
   @OneToMany(mappedBy = "account")
   private List<AccountCertificate> accountCertificates;
+
+  @OneToMany(mappedBy = "account")
+  private List<AccountLink> accountLinks;
 
   /**
    * Version setter.

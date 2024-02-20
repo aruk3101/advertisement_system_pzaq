@@ -1,4 +1,4 @@
-package com.draczek.SystemOgloszeniowy.userCertificates.domain;
+package com.draczek.SystemOgloszeniowy.accountCertificate.domain;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
