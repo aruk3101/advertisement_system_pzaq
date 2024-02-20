@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
 import com.draczek.SystemOgloszeniowy.accountCertificate.domain.AccountCertificate;
+import com.draczek.SystemOgloszeniowy.accountEducation.domain.command.AccountEducation;
 import com.draczek.SystemOgloszeniowy.accountLink.domain.command.AccountLink;
 import com.draczek.SystemOgloszeniowy.accountSkill.domain.command.AccountSkill;
 import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
@@ -79,6 +80,9 @@ public class Account extends AuditableEntity {
 
   @OneToMany(mappedBy = "account")
   private List<AccountSkill> accountSkills;
+
+  @OneToMany(mappedBy = "account")
+  private List<AccountEducation> accountEducations;
 
   /**
    * Version setter.

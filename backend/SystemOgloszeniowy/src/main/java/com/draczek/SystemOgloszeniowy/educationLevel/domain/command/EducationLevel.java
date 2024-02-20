@@ -1,7 +1,6 @@
-package com.draczek.SystemOgloszeniowy.accountSkill.domain.command;
+package com.draczek.SystemOgloszeniowy.educationLevel.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
-import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -9,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,7 +19,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 /**
- * AccountSkill entity.
+ * EducationLevel entity.
  */
 @Entity
 @Getter
@@ -31,8 +28,8 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
-@Table(name = "accounts_skills")
-public class AccountSkill extends AuditableEntity {
+@Table(name = "education_levels")
+public class EducationLevel extends AuditableEntity {
 
   @Id
   @Column(nullable = false, updatable = false)
@@ -44,12 +41,8 @@ public class AccountSkill extends AuditableEntity {
   @Type(type = "org.hibernate.type.UUIDCharType")
   private UUID uuid;
 
-  @ManyToOne
-  @JoinColumn(name = "accounts_id", nullable = false)
-  private Account account;
-
   @NotNull
-  private String skillName;
+  private String name;
 
   /**
    * Version setter.

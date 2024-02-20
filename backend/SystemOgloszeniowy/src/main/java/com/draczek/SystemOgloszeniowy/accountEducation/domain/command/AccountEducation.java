@@ -1,7 +1,9 @@
-package com.draczek.SystemOgloszeniowy.accountSkill.domain.command;
+package com.draczek.SystemOgloszeniowy.accountEducation.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
+import com.draczek.SystemOgloszeniowy.educationLevel.domain.command.EducationLevel;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -22,7 +24,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 /**
- * AccountSkill entity.
+ * AccountEducation entity.
  */
 @Entity
 @Getter
@@ -31,8 +33,8 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
-@Table(name = "accounts_skills")
-public class AccountSkill extends AuditableEntity {
+@Table(name = "accounts_education")
+public class AccountEducation extends AuditableEntity {
 
   @Id
   @Column(nullable = false, updatable = false)
@@ -49,7 +51,24 @@ public class AccountSkill extends AuditableEntity {
   private Account account;
 
   @NotNull
-  private String skillName;
+  private String schoolName;
+
+  @NotNull
+  private String schoolLocation;
+
+  @NotNull
+  @ManyToOne
+  @JoinColumn(name = "education_level_id")
+  private EducationLevel educationLevel;
+
+  @NotNull
+  private String specialization;
+
+  @NotNull
+  private Date periodStart;
+
+  @NotNull
+  private Date periodEnd;
 
   /**
    * Version setter.
