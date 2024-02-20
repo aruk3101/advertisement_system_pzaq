@@ -9,7 +9,7 @@ export default function AuthenticaedDropdownItem() {
   return (
     <>
       <li>
-        <a className="dropdown-item" href="#">
+        <a className="dropdown-item" href="/user/profile">
           Profil Użytkownika
         </a>
       </li>
