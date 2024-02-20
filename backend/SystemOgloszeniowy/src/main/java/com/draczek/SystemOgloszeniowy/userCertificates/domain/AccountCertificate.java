@@ -1,13 +1,19 @@
 package com.draczek.SystemOgloszeniowy.userCertificates.domain;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
+import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
