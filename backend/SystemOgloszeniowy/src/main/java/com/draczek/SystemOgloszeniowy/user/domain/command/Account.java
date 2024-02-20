@@ -2,11 +2,14 @@ package com.draczek.SystemOgloszeniowy.user.domain.command;
 
 import com.draczek.SystemOgloszeniowy.accountCertificate.domain.AccountCertificate;
 import com.draczek.SystemOgloszeniowy.accountEducation.domain.command.AccountEducation;
+import com.draczek.SystemOgloszeniowy.accountExperience.domain.command.AccountExperience;
+import com.draczek.SystemOgloszeniowy.accountLanguage.domain.command.AccountLanguage;
 import com.draczek.SystemOgloszeniowy.accountLink.domain.command.AccountLink;
 import com.draczek.SystemOgloszeniowy.accountSkill.domain.command.AccountSkill;
 import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.exception.UserOptimisticLockException;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -83,6 +87,12 @@ public class Account extends AuditableEntity {
 
   @OneToMany(mappedBy = "account")
   private List<AccountEducation> accountEducations;
+
+  @OneToMany(mappedBy = "account")
+  private List<AccountExperience> accountExperiences;
+
+  @OneToMany(mappedBy = "account")
+  private List<AccountLanguage> accountLanguages;
 
   /**
    * Version setter.
