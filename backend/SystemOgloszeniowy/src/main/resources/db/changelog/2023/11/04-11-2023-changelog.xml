@@ -2,18 +2,18 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.12.xsd">
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.12.xsd">
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_experiences" runOnChange="true">
-        <createTable tableName="user_experiences">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_experiences" runOnChange="true">
+        <createTable tableName="accounts_experiences">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_experiences_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_experiences_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_experiences_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_experiences_user_id_fkey" references="accounts(id)"/>
             </column>
             <column name="position" type="varchar(100)">
                 <constraints nullable="false"/>
@@ -30,11 +30,11 @@
             <column name="period_end" type="date" remarks="null oznacza, że nadal w tej pracy"/>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_experiences_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_experiences_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_experiences_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_experiences_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -43,35 +43,35 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_experiences_uuid_idx"
+        <createIndex indexName="accounts_experiences_uuid_idx"
                      schemaName="public"
-                     tableName="user_experiences"
+                     tableName="accounts_experiences"
                      unique="true">
             <column name="uuid" />
         </createIndex>
     </changeSet>
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_experiences_duties" runOnChange="true">
-        <createTable tableName="user_experiences_duties">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_experiences_duties" runOnChange="true">
+        <createTable tableName="accounts_experiences_duties">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_experiences_duties_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_experiences_duties_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_experience_id" type="bigint">
-                <constraints foreignKeyName="user_experiences_duties_user_experience_id_fkey" references="user_experiences(id)"/>
+            <column name="accounts_experience_id" type="bigint">
+                <constraints foreignKeyName="accounts_experiences_duties_account_experience_id_fkey" references="accounts_experiences(id)"/>
             </column>
             <column name="duty" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_experiences_duties_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_experiences_duties_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_experiences_duties_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_experiences_duties_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -80,9 +80,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_experiences_duties_uuid_idx"
+        <createIndex indexName="accounts_experiences_duties_uuid_idx"
                      schemaName="public"
-                     tableName="user_experiences_duties"
+                     tableName="accounts_experiences_duties"
                      unique="true">
             <column name="uuid" />
         </createIndex>
@@ -122,16 +122,16 @@
         </createIndex>
     </changeSet>
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_education" runOnChange="true">
-        <createTable tableName="user_education">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_education" runOnChange="true">
+        <createTable tableName="accounts_education">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_education_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_education_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_education_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_education_user_id_fkey" references="accounts(id)"/>
             </column>
             <column name="school_name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -140,7 +140,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="education_level_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="user_education_education_level_id_fkey" references="education_levels(id)"/>
+                <constraints nullable="false" foreignKeyName="accounts_education_education_level_id_fkey" references="education_levels(id)"/>
             </column>
             <column name="specialization" type="varchar(100)"/>
             <column name="period_start" type="date">
@@ -149,11 +149,11 @@
             <column name="period_end" type="date" remarks="null oznacza, że nadal w tej szkole"/>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_education_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_education_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_education_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_education_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -162,9 +162,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_education_uuid_idx"
+        <createIndex indexName="accounts_education_uuid_idx"
                      schemaName="public"
-                     tableName="user_education"
+                     tableName="accounts_education"
                      unique="true">
             <column name="uuid" />
         </createIndex>
@@ -205,29 +205,29 @@
     </changeSet>
 
     <changeSet author="Damian Raczek" id="04112023-create_table_user_languages" runOnChange="true">
-        <createTable tableName="user_languages">
+        <createTable tableName="accounts_languages">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_languages_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_languages_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_languages_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_languages_user_id_fkey" references="accounts(id)"/>
             </column>
             <column name="language" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="language_level_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="user_languages_language_level_id_fkey" references="language_levels(id)"/>
+                <constraints nullable="false" foreignKeyName="accounts_languages_language_level_id_fkey" references="language_levels(id)"/>
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_languages_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_languages_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_languages_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_languages_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -236,35 +236,35 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_languages_uuid_idx"
+        <createIndex indexName="accounts_languages_uuid_idx"
                      schemaName="public"
-                     tableName="user_languages"
+                     tableName="accounts_languages"
                      unique="true">
             <column name="uuid" />
         </createIndex>
     </changeSet>
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_skills" runOnChange="true">
-        <createTable tableName="user_skills">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_skills" runOnChange="true">
+        <createTable tableName="accounts_skills">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_skills_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_skills_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_skills_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_skills_accounts_id_fkey" references="accounts(id)"/>
             </column>
             <column name="skill_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_skills_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_skills_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_skills_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_skills_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -273,24 +273,24 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_skills_uuid_idx"
+        <createIndex indexName="accounts_skills_uuid_idx"
                      schemaName="public"
-                     tableName="user_skills"
+                     tableName="accounts_skills"
                      unique="true">
             <column name="uuid" />
         </createIndex>
     </changeSet>
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_certificates" runOnChange="true">
-        <createTable tableName="user_certificates">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_certificates" runOnChange="true">
+        <createTable tableName="accounts_certificates">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_certificates_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_certificates_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_certificates_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_certificates_accounts_id_fkey" references="accounts(id)"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -303,11 +303,11 @@
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_certificates_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_certificates_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_certificates_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_certificates_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -316,24 +316,24 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_certificates_uuid_idx"
+        <createIndex indexName="accounts_certificates_uuid_idx"
                      schemaName="public"
-                     tableName="user_certificates"
+                     tableName="accounts_certificates"
                      unique="true">
             <column name="uuid" />
         </createIndex>
     </changeSet>
 
-    <changeSet author="Damian Raczek" id="04112023-create_table_user_links" runOnChange="true">
-        <createTable tableName="user_links">
+    <changeSet author="Damian Raczek" id="04112023-create_table_accounts_links" runOnChange="true">
+        <createTable tableName="accounts_links">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="user_links_pkey" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="accounts_links_pkey" nullable="false"/>
             </column>
             <column name="uuid" type="varchar(36)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint">
-                <constraints foreignKeyName="user_links_user_id_fkey" references="users(id)"/>
+            <column name="accounts_id" type="bigint">
+                <constraints foreignKeyName="accounts_links_user_id_fkey" references="accounts(id)"/>
             </column>
             <column name="name" type="varchar(50)" remarks="Nazwa strony/portalu, np. Linked.in, GitHub itp.">
                 <constraints nullable="false"/>
@@ -343,11 +343,11 @@
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="user_links_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_links_user_id_created_fkey" references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="user_links_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_links_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
                 <constraints nullable="false" />
@@ -356,9 +356,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex indexName="user_links_uuid_idx"
+        <createIndex indexName="accounts_links_uuid_idx"
                      schemaName="public"
-                     tableName="user_links"
+                     tableName="accounts_links"
                      unique="true">
             <column name="uuid" />
         </createIndex>

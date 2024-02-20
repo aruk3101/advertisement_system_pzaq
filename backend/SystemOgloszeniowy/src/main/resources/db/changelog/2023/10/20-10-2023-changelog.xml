@@ -2,7 +2,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.12.xsd">
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.12.xsd">
 
     <changeSet author="Damian Raczek" id="20102023-init_sql" runOnChange="true">
         <createProcedure dbms="postgresql"
