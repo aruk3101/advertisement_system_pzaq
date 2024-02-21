@@ -1,6 +1,6 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
-import com.draczek.SystemOgloszeniowy.accountCertificate.domain.AccountCertificate;
+import com.draczek.SystemOgloszeniowy.accountCertificate.domain.command.AccountCertificate;
 import com.draczek.SystemOgloszeniowy.accountEducation.domain.command.AccountEducation;
 import com.draczek.SystemOgloszeniowy.accountExperience.domain.command.AccountExperience;
 import com.draczek.SystemOgloszeniowy.accountLanguage.domain.command.AccountLanguage;
