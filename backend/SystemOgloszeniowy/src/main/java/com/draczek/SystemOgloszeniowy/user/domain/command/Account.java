@@ -30,6 +30,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 
 /**
@@ -74,21 +76,27 @@ public class Account extends AuditableEntity {
 
   private String profilePictureSource;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountCertificate> accountCertificates;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountLink> accountLinks;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountSkill> accountSkills;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountEducation> accountEducations;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountExperience> accountExperiences;
 
+  @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "account")
   private List<AccountLanguage> accountLanguages;
 

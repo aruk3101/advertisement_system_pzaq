@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.educationLevel.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
+import com.draczek.SystemOgloszeniowy.educationLevel.domain.exception.EducationLevelOptimisticLockException;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -33,7 +34,7 @@ public class EducationLevel extends AuditableEntity {
 
   @Id
   @Column(nullable = false, updatable = false)
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @NotNull
@@ -50,7 +51,7 @@ public class EducationLevel extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new EducationLevelOptimisticLockException();
     }
     this.version = version;
   }

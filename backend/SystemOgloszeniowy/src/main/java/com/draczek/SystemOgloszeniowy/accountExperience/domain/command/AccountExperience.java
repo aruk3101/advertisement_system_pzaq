@@ -35,12 +35,12 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
-@Table(name = "account_experiences")
+@Table(name = "accounts_experiences")
 public class AccountExperience extends AuditableEntity {
 
   @Id
   @Column(nullable = false, updatable = false)
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @NotNull
