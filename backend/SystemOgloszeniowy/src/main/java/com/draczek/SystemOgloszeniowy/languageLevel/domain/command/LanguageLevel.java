@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.languageLevel.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
+import com.draczek.SystemOgloszeniowy.languageLevel.domain.exception.LanguageLevelOptimisticLockException;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -50,7 +51,7 @@ public class LanguageLevel extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new LanguageLevelOptimisticLockException();
     }
     this.version = version;
   }

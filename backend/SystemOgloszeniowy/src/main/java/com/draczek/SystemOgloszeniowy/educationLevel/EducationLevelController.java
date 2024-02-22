@@ -1,4 +1,4 @@
-package com.draczek.SystemOgloszeniowy.educationLevel.domain;
+package com.draczek.SystemOgloszeniowy.educationLevel;
 
 import com.draczek.SystemOgloszeniowy.educationLevel.domain.command.EducationLevelFacade;
 import com.draczek.SystemOgloszeniowy.educationLevel.domain.dto.CreateEducationLevelDto;
