@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountCertificate.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountCertificate.domain.exception.AccountCertificateOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import java.util.Date;
@@ -64,7 +65,7 @@ public class AccountCertificate extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountCertificateOptimisticLockException();
     }
     this.version = version;
   }
