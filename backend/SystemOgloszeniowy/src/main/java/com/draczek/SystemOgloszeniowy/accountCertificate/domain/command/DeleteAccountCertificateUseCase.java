@@ -12,6 +12,11 @@ public class DeleteAccountCertificateUseCase {
   private final AccountCertificateRepository accountCertificateRepository;
   private final SecurityFacade securityFacade;
 
+  /**
+   * Method for deleting AccountEducation by its UUID.
+   *
+   * @param uuid AccountEducation's UUID
+   */
   public void delete(UUID uuid) {
     AccountCertificate accountCertificate = accountCertificateRepository
         .get(uuid, securityFacade.getLoggedInAccount());

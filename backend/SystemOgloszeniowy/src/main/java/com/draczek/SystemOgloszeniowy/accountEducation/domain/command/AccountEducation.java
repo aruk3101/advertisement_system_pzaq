@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountEducation.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountEducation.domain.exception.AccountEducationOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.educationLevel.domain.command.EducationLevel;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
@@ -76,7 +77,7 @@ public class AccountEducation extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountEducationOptimisticLockException();
     }
     this.version = version;
   }
