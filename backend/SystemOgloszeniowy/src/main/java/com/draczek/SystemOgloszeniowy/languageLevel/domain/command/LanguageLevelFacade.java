@@ -31,6 +31,15 @@ public class LanguageLevelFacade {
   }
 
   /**
+   * Method for searching LanguageLevel entity by its UUID.
+   *
+   * @return LanguageLevel entity
+   */
+  public LanguageLevel getEntity(UUID uuid) {
+    return searchLanguageLevelUseCase.getEntity(uuid);
+  }
+
+  /**
    * Method for creating Language levels.
    *
    * @param dto CreateLanguageLevelDto
