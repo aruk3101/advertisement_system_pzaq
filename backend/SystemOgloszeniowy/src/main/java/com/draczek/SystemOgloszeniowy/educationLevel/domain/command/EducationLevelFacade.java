@@ -31,6 +31,16 @@ public class EducationLevelFacade {
   }
 
   /**
+   * Method for searching EducationLevel entity by its UUID.
+   *
+   * @param uuid EducationLevel's UUID
+   * @return EducationLevel entity
+   */
+  public EducationLevel getEntity(UUID uuid) {
+    return searchEducationLevelUseCase.search(uuid);
+  }
+
+  /**
    * Method for creating Education levels.
    *
    * @param dto CreateEducationLevelDto

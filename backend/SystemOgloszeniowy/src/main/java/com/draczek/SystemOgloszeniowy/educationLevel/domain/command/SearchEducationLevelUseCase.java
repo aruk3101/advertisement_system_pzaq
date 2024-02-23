@@ -2,6 +2,7 @@ package com.draczek.SystemOgloszeniowy.educationLevel.domain.command;
 
 import com.draczek.SystemOgloszeniowy.educationLevel.domain.dto.EducationLevelDto;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -14,5 +15,9 @@ public class SearchEducationLevelUseCase {
 
   public List<EducationLevelDto> search() {
     return educationLevelRepository.findAll().stream().map(educationLevelMapper::toDto).toList();
+  }
+
+  public EducationLevel search(UUID uuid) {
+    return educationLevelRepository.get(uuid);
   }
 }
