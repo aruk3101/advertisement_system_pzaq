@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountLanguage.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountLanguage.domain.exception.AccountLanguageOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.languageLevel.domain.command.LanguageLevel;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
@@ -62,7 +63,7 @@ public class AccountLanguage extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountLanguageOptimisticLockException();
     }
     this.version = version;
   }
