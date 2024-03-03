@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountLink.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountLink.domain.exception.AccountLinkOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import java.util.Objects;
@@ -60,7 +61,7 @@ public class AccountLink extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountLinkOptimisticLockException();
     }
     this.version = version;
   }
