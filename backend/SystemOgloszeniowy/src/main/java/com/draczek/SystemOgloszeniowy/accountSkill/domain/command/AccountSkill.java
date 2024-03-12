@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountSkill.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountSkill.domain.exception.AccountSkillOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import java.util.Objects;
@@ -57,7 +58,7 @@ public class AccountSkill extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountSkillOptimisticLockException();
     }
     this.version = version;
   }
