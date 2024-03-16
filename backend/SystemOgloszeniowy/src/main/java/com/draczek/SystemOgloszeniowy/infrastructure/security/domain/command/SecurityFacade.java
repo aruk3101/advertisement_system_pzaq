@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command;
 
 import com.draczek.SystemOgloszeniowy.common.dto.ViolationDto;
+import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
 import com.draczek.SystemOgloszeniowy.user.domain.command.UserDetailsImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,15 @@ public class SecurityFacade {
    */
   public UserDetailsImpl getLoggedInUser() {
     return securityContextHandler.getLoggedInUser();
+  }
+
+  /**
+   * Method returning logged in user's account instance.
+   *
+   * @return Account instance
+   */
+  public Account getLoggedInAccount() {
+    return getLoggedInUser().getUserDetails().getAccount();
   }
 
   /**
