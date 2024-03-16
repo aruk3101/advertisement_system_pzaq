@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.accountExperiencesDuties.domain.command;
 
 import com.draczek.SystemOgloszeniowy.accountExperience.domain.command.AccountExperience;
+import com.draczek.SystemOgloszeniowy.accountExperiencesDuties.domain.exception.AccountExperienceDutyOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import java.util.Objects;
 import java.util.UUID;
@@ -57,7 +58,7 @@ public class AccountExperienceDuty extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountExperienceDutyOptimisticLockException();
     }
     this.version = version;
   }

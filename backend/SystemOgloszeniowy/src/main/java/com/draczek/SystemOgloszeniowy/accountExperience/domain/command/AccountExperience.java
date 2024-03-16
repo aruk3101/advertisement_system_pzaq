@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.accountExperience.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountExperience.domain.exception.AccountExperienceOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.accountExperiencesDuties.domain.command.AccountExperienceDuty;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.command.Account;
@@ -7,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -67,7 +69,7 @@ public class AccountExperience extends AuditableEntity {
   @NotNull
   private Date periodEnd;
 
-  @OneToMany(mappedBy = "accountExperience")
+  @OneToMany(mappedBy = "accountExperience", cascade = CascadeType.ALL)
   private List<AccountExperienceDuty> accountExperienceDuties;
 
   /**
@@ -76,7 +78,7 @@ public class AccountExperience extends AuditableEntity {
   @Override
   public void setVersion(Integer version) {
     if (!Objects.equals(version, this.version)) {
-      //throw new UserOptimisticLockException();
+      throw new AccountExperienceOptimisticLockException();
     }
     this.version = version;
   }
