@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.address.domain.command.AddressFacade;
 import com.draczek.SystemOgloszeniowy.common.FileStorageService;
 import com.draczek.SystemOgloszeniowy.common.FileUploadValidator;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
@@ -21,7 +22,8 @@ class UserConfig {
       SecurityFacade securityFacade,
       PasswordEncoder passwordEncoder,
       FileStorageService fileStorageService,
-      RoleFacade roleFacade) {
+      RoleFacade roleFacade,
+      AddressFacade addressFacade) {
     UserMapper userMapper = Mappers.getMapper(UserMapper.class);
     SearchUserUseCase searchUserUseCase = new SearchUserUseCase(userRepository,
         userMapper,
@@ -44,7 +46,8 @@ class UserConfig {
         securityFacade,
         userMapper,
         updateUserValidationHelper,
-        fileStorageService);
+        fileStorageService,
+        addressFacade);
 
     return new UserFacade(
         searchUserUseCase,

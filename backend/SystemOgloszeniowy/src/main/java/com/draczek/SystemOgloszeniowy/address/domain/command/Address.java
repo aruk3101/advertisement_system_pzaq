@@ -1,6 +1,8 @@
 package com.draczek.SystemOgloszeniowy.address.domain.command;
 
+import com.draczek.SystemOgloszeniowy.address.domain.exception.AddressOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
+import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,6 +55,15 @@ public class Address extends AuditableEntity {
 
   private String country;
 
-  //TODO override version setter for optimistic lock exception.
+  /**
+   * Version setter.
+   */
+  @Override
+  public void setVersion(Integer version) {
+    if (!Objects.equals(version, this.version)) {
+      throw new AddressOptimisticLockException();
+    }
+    this.version = version;
+  }
 
 }

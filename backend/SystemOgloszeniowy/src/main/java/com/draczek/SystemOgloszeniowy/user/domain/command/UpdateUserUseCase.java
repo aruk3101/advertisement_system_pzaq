@@ -1,7 +1,6 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
-import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
-import com.draczek.SystemOgloszeniowy.address.domain.dto.UpdateAddressDto;
+import com.draczek.SystemOgloszeniowy.address.domain.command.AddressFacade;
 import com.draczek.SystemOgloszeniowy.common.FileStorageService;
 import com.draczek.SystemOgloszeniowy.common.enumerated.StatusEnum;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
@@ -23,6 +22,7 @@ class UpdateUserUseCase {
   private final UserMapper userMapper;
   private final UpdateUserValidationHelper updateUserValidationHelper;
   private final FileStorageService fileStorageService;
+  private final AddressFacade addressFacade;
 
   /**
    * Method for changing User's status to active.
@@ -92,22 +92,9 @@ class UpdateUserUseCase {
     user.getAccount().setLastName(dto.getLastName());
     user.getAccount().setBirthDate(dto.getBirthDate());
     user.getAccount().setPhoneNumber(dto.getPhoneNumber());
-    user.getAccount().setAddress(updateAddress(user.getAccount().getAddress(),
-        dto.getUpdateAddressDto()));
+    user.getAccount().setAddress(addressFacade.update(dto.getUpdateAddressDto()));
     user.getAccount().setVersion(dto.getVersion());
     return userMapper.toDto(userRepository.saveAndFlush(user));
-  }
-
-  private Address updateAddress(Address address, UpdateAddressDto dto) {
-    address.setCity(dto.getCity());
-    address.setPostalName(dto.getPostalName());
-    address.setPostalCode(dto.getPostalCode());
-    address.setStreet(dto.getStreet());
-    address.setStreetNumber(dto.getStreetNumber());
-    address.setApartmentNumber(dto.getApartmentNumber());
-    address.setCountry(dto.getCountry());
-    address.setVersion(dto.getVersion());
-    return address;
   }
 
   /**
