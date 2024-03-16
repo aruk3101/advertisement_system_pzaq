@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,7 +70,7 @@ public class AccountExperience extends AuditableEntity {
   @NotNull
   private Date periodEnd;
 
-  @OneToMany(mappedBy = "accountExperience", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "accountExperience", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private List<AccountExperienceDuty> accountExperienceDuties;
 
   /**
