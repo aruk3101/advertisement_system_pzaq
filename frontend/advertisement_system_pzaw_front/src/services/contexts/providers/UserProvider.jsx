@@ -2,15 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import UserContext from "services/contexts/contexts/UserContext";
 import { Info } from "services/api/UserService";
 import { toast } from "react-toastify";
+import SpinnerView from "components/common/SpinnerView/SpinnerView";
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     Info().then((res) => {
-      setIsLoading(false);
       if (!res.isSuccesfull) {
         toast.error(res.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -18,6 +18,7 @@ const UserProvider = ({ children }) => {
         return;
       }
       setUser(res.data);
+      setIsLoading(false);
     });
   }, []);
 
@@ -28,8 +29,15 @@ const UserProvider = ({ children }) => {
     [user]
   );
 
+  console.log(isLoading);
+  console.log(user);
+
   return (
-    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
+    <SpinnerView isLoading={isLoading}>
+      <UserContext.Provider value={contextValue}>
+        {children}
+      </UserContext.Provider>
+    </SpinnerView>
   );
 };
 
