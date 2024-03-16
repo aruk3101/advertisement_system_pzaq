@@ -1,10 +1,13 @@
 import defaultPfpIcon from "assets/images/defaultPfp.webp";
 import Card from "components/common/Card/Card";
+import { useUser } from "hooks/useUser";
 
 export default function UserData() {
+  const { user } = useUser();
+  console.log(user);
   return (
     <Card
-      header="Imie Nazwisko"
+      header={`${user.account.firstName} ${user.account.lastName}`}
       beforeContent={
         <div className=" banner position-relative bg-info rounded-top">
           <img

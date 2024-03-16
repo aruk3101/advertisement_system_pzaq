@@ -51,11 +51,10 @@ function BASE_URL() {
 
 export function request({ method, url, headers, data }) {
   let base = BASE_URL();
-  console.log(base);
   return axios({
     method: method,
     url: base + url,
-    headers: headers,
+    headers: { ...headers, Authorization: localStorage.getItem("token") }, // TEMPORARY FIX - DON'T KNOW WHY axios.defaults.headers.common are not applied to the request
     data: data,
   })
     .then((res) => {
