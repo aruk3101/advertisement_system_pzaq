@@ -1,9 +1,16 @@
 package com.draczek.SystemOgloszeniowy.user.domain.command;
 
+import com.draczek.SystemOgloszeniowy.accountCertificate.domain.command.AccountCertificate;
+import com.draczek.SystemOgloszeniowy.accountEducation.domain.command.AccountEducation;
+import com.draczek.SystemOgloszeniowy.accountExperience.domain.command.AccountExperience;
+import com.draczek.SystemOgloszeniowy.accountLanguage.domain.command.AccountLanguage;
+import com.draczek.SystemOgloszeniowy.accountLink.domain.command.AccountLink;
+import com.draczek.SystemOgloszeniowy.accountSkill.domain.command.AccountSkill;
 import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.user.domain.exception.UserOptimisticLockException;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.CascadeType;
@@ -13,6 +20,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,6 +30,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 
 /**
@@ -65,6 +75,30 @@ public class Account extends AuditableEntity {
   private Address address;
 
   private String profilePictureSource;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountCertificate> accountCertificates;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountLink> accountLinks;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountSkill> accountSkills;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountEducation> accountEducations;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountExperience> accountExperiences;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "account")
+  private List<AccountLanguage> accountLanguages;
 
   /**
    * Version setter.
