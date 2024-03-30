@@ -20,9 +20,14 @@ public class AccountDto {
   String firstName;
 
   String lastName;
+
   Date birthDate;
 
   String phoneNumber;
+
+  String careerSummary;
+
+  String currentPosition;
 
   AddressDto address;
 

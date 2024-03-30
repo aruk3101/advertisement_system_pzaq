@@ -92,6 +92,8 @@ class UpdateUserUseCase {
     user.getAccount().setLastName(dto.getLastName());
     user.getAccount().setBirthDate(dto.getBirthDate());
     user.getAccount().setPhoneNumber(dto.getPhoneNumber());
+    user.getAccount().setCareerSummary(dto.getCareerSummary());
+    user.getAccount().setCurrentPosition(dto.getCurrentPosition());
     user.getAccount().setAddress(addressFacade.update(dto.getUpdateAddressDto()));
     user.getAccount().setVersion(dto.getVersion());
     return userMapper.toDto(userRepository.saveAndFlush(user));

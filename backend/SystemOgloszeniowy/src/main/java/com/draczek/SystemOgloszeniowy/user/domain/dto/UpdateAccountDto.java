@@ -20,6 +20,10 @@ public class UpdateAccountDto {
 
   UpdateAddressDto updateAddressDto;
 
+  String careerSummary;
+
+  String currentPosition;
+
   @NotNull
   Integer version;
 }

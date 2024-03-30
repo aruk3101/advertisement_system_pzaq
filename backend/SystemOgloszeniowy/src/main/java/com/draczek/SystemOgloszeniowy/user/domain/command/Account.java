@@ -70,6 +70,10 @@ public class Account extends AuditableEntity {
 
   private String phoneNumber;
 
+  private String careerSummary;
+
+  private String currentPosition;
+
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "address_id")
   private Address address;
