@@ -11,7 +11,11 @@ export default function UserData() {
       beforeContent={
         <div className=" banner position-relative bg-info rounded-top">
           <img
-            src={BASE_URL() + user.account.profilePictureSource}
+            src={
+              user.account.profilePictureSource != null
+                ? BASE_URL() + user.account.profilePictureSource
+                : defaultPfpIcon
+            }
             className="object-fit-cover rounded-circle border border-5 border-info position-absolute pfp"
             width={200}
             height={200}
