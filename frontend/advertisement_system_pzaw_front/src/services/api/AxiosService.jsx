@@ -39,18 +39,22 @@ function errorHandler(response) {
   }
 }
 
-function BASE_URL() {
+export function BASE_URL_API() {
+  return BASE_URL() + "/api/";
+}
+
+export function BASE_URL() {
   console.log(process.env);
   console.log(process.env.REACT_APP_NODE_ENV);
   if (process.env.REACT_APP_NODE_ENV.trim() == "deploy") {
-    return "https://advertisement-system-pzaw.onrender.com/api/";
+    return "https://advertisement-system-pzaw.onrender.com";
   } else {
-    return "http://localhost:8080/api/";
+    return "http://localhost:8080";
   }
 }
 
 export function request({ method, url, headers, data }) {
-  let base = BASE_URL();
+  let base = BASE_URL_API();
   return axios({
     method: method,
     url: base + url,

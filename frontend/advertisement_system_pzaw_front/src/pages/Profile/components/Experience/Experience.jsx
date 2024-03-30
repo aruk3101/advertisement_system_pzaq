@@ -1,32 +1,27 @@
 import ListElement from "../ListElement/ListElement";
 import Card from "components/common/Card/Card";
+import { useUser } from "hooks/useUser";
 
 export default function Experience() {
+  const { user } = useUser();
+  const { accountExperiences } = user.account;
   return (
     <Card header="Doświadczenie" id="doswiadczenie">
       <ul class="list-group list-group-flush">
-        <ListElement
-          h1="Przedsiębiorstwo"
-          h2="Stanowisko"
-          location="Adres siedziby firmy"
-          period_start="03.2020"
-          period_end="09.2022"
-          duties={[
-            "Duty 1",
-            "Duty 2",
-            "Duty 3",
-            "max character duty max character duty max character duty max character duty max character duty max c",
-            "Duty 5",
-          ]}
-        />
-        <ListElement
-          h1="Przedsiębiorstwo"
-          h2="Stanowisko"
-          location="Adres siedziby firmy"
-          period_start="03.2020"
-          period_end="09.2022"
-          duties={["Duty 1", "Duty 2", "Duty 3", "Duty 4", "Duty 5"]}
-        />
+        {accountExperiences.map((value) => {
+          return (
+            <ListElement
+              h1={value.companyName}
+              h2={value.position}
+              location={value.location}
+              period_start={value.periodStart}
+              period_end={value.periodEnd}
+              duties={value.accountExperienceDuties.map((value) => {
+                return value.duty;
+              })}
+            />
+          );
+        })}
       </ul>
     </Card>
   );

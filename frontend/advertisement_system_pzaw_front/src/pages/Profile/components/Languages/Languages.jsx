@@ -1,7 +1,11 @@
+import { toHaveAccessibleDescription } from "@testing-library/jest-dom/matchers";
 import Card from "components/common/Card/Card";
 import InputGroup from "components/common/InputGroup/InputGroup";
+import { useUser } from "hooks/useUser";
 
 export default function Languages() {
+  const { user } = useUser();
+  const { accountLanguages } = user.account;
   return (
     <Card
       header="Języki"
@@ -9,24 +13,11 @@ export default function Languages() {
       headerCenter="text-center"
       id="jezyki"
     >
-      {[
-        {
-          language: "Angielski",
-          level: "C2",
-        },
-        {
-          language: "Niemiecki",
-          level: "B1",
-        },
-        {
-          language: "Francuski",
-          level: "A1",
-        },
-      ].map((value, index) => {
+      {accountLanguages.map((value, index) => {
         return (
           <InputGroup
             id={"language-addon-" + index}
-            firstElement={value.level}
+            firstElement={value.languageLevel.name}
             aria_label={"language-addon-" + index}
             value={value.language}
           />

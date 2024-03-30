@@ -1,7 +1,10 @@
+import { getSuggestedQuery } from "@testing-library/react";
 import Card from "components/common/Card/Card";
 import InputGroup from "components/common/InputGroup/InputGroup";
+import { useUser } from "hooks/useUser";
 
 export default function PersonalData() {
+  const { user } = useUser();
   return (
     <Card
       header="Dane Personalne"
@@ -24,7 +27,14 @@ export default function PersonalData() {
           </svg>
         }
         aria_label="Address"
-        value="Mordarka xxx"
+        value={
+          user.account.address.street +
+          " " +
+          user.account.address.streetNumber +
+          "/" +
+          (user.account.address.apartmentNumber ??
+            user.account.address.apartmentNumber)
+        }
       />
       <InputGroup
         id="basic-addon4"
@@ -41,7 +51,7 @@ export default function PersonalData() {
           </svg>
         }
         aria_label="BirthDate"
-        value="01.01.1990"
+        value={user.account.birthDate.slice(0, 10)}
       />
     </Card>
   );

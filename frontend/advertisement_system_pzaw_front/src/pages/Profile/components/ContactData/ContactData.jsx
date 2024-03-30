@@ -1,7 +1,10 @@
 import Card from "components/common/Card/Card";
 import InputGroup from "components/common/InputGroup/InputGroup";
+import { useUser } from "hooks/useUser";
 
 export default function ContactData() {
+  const { user } = useUser();
+  const { account } = user;
   return (
     <Card
       header="Dane Kontaktowe"
@@ -24,7 +27,7 @@ export default function ContactData() {
           </svg>
         }
         aria_label="Telephone"
-        value="123 456 789"
+        value={account.phoneNumber}
       />
       <InputGroup
         id="basic-addon2"
@@ -41,7 +44,7 @@ export default function ContactData() {
           </svg>
         }
         aria_label="Email"
-        value="mail@mail.com"
+        value={user.username}
       />
     </Card>
   );

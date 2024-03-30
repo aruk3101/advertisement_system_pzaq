@@ -1,7 +1,10 @@
 import Card from "components/common/Card/Card";
 import { Link } from "react-router-dom";
+import { useUser } from "hooks/useUser";
 
 export default function Links() {
+  const { user } = useUser();
+  const { accountLinks } = user.account;
   return (
     <Card
       header="Linki"
@@ -10,21 +13,18 @@ export default function Links() {
       id="linki"
     >
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">
-          <Link className="text-decoration-none text-center" to={"/"}>
-            Github
-          </Link>
-        </li>
-        <li className="list-group-item">
-          <Link className="text-decoration-none text-center" to={"/"}>
-            Linkedin
-          </Link>
-        </li>
-        <li className="list-group-item">
-          <Link className="text-decoration-none text-center" to={"/"}>
-            Facebook
-          </Link>
-        </li>
+        {accountLinks.map((value) => {
+          return (
+            <li className="list-group-item">
+              <Link
+                className="text-decoration-none text-center"
+                to={value.hyperlink}
+              >
+                {value.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </Card>
   );
