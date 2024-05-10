@@ -25,12 +25,10 @@ const UserProvider = ({ children }) => {
   const contextValue = useMemo(
     () => ({
       user,
+      setUser,
     }),
     [user]
   );
-
-  console.log(isLoading);
-  console.log(user);
 
   return (
     <SpinnerView isLoading={isLoading}>

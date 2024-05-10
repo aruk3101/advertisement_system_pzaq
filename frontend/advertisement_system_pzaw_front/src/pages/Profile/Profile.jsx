@@ -14,10 +14,12 @@ import PersonalData from "./components/PersonalData/PersonalData";
 import Languages from "./components/Languages/Languages";
 import Links from "./components/Links/Links";
 import UserProvider from "services/contexts/providers/UserProvider";
+import { EditPopup, EditPopupTrigger } from "components/EditPopup/EditPopup";
 
 function Profile() {
   return (
     <UserProvider>
+      <EditPopup />
       <div className="bg-primary-subtle">
         <div className="container gx-5 gy-2 p-1 p-sm-2 p-md-4">
           <div className="row">

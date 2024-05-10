@@ -2,6 +2,7 @@ import defaultPfpIcon from "assets/images/defaultPfp.webp";
 import Card from "components/common/Card/Card";
 import { useUser } from "hooks/useUser";
 import { BASE_URL } from "services/api/AxiosService";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
 export default function UserData() {
   const { user } = useUser();
@@ -23,17 +24,22 @@ export default function UserData() {
         </div>
       }
     >
-      {user.account.address !== null ? (
-        <>
-          <span>
-            {user.account.address.city} , {user.account.address.postalCode}{" "}
-            {user.account.address.postalName}, &nbsp;
-          </span>
-          <span>{user.account.address.country}</span>
-        </>
-      ) : (
-        ""
-      )}
+      <div className="d-flex align-items-center">
+        {user.account.address !== null ? (
+          <>
+            <span>
+              {user.account.address.city} , {user.account.address.postalCode}{" "}
+              {user.account.address.postalName}, &nbsp;
+            </span>
+            <span>{user.account.address.country}</span>
+          </>
+        ) : (
+          ""
+        )}
+        <div className="flex-grow-1 d-flex justify-content-end">
+          <EditPopupTrigger variant={"UserData"} />
+        </div>
+      </div>
     </Card>
   );
 }
