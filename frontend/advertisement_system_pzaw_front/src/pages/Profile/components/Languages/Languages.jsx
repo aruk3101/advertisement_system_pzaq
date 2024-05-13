@@ -2,6 +2,8 @@ import { toHaveAccessibleDescription } from "@testing-library/jest-dom/matchers"
 import Card from "components/common/Card/Card";
 import InputGroup from "components/common/InputGroup/InputGroup";
 import { useUser } from "hooks/useUser";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
+import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
 
 export default function Languages() {
   const { user } = useUser();
@@ -15,14 +17,20 @@ export default function Languages() {
     >
       {accountLanguages.map((value, index) => {
         return (
-          <InputGroup
-            id={"language-addon-" + index}
-            firstElement={value.languageLevel.name}
-            aria_label={"language-addon-" + index}
-            value={value.language}
-          />
+          <>
+            <InputGroup
+              id={"language-addon-" + index}
+              firstElement={value.languageLevel.name}
+              aria_label={"language-addon-" + index}
+              value={value.language}
+            />
+            <DeleteButton variant="Language" uuid={value.uuid} />
+            <EditPopupTrigger variant="Language" element={value} />
+          </>
         );
       })}
+      <br />
+      <EditPopupTrigger variant="Language" />
     </Card>
   );
 }

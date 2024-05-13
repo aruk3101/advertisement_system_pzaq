@@ -1,6 +1,7 @@
 import Card from "components/common/Card/Card";
 import ListElement from "../ListElement/ListElement";
 import { useUser } from "hooks/useUser";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
 export default function Courses() {
   const { user } = useUser();
@@ -14,10 +15,13 @@ export default function Courses() {
               h1={value.name}
               h2={value.host}
               date={value.date.slice(0, 10)}
+              variant="Course"
+              element={value}
             />
           );
         })}
       </ul>
+      <EditPopupTrigger variant="Course" />
     </Card>
   );
 }

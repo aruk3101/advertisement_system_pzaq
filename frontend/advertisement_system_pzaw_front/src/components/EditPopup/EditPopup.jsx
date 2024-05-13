@@ -1,10 +1,21 @@
 import { useRef, useEffect, useState } from "react";
 import EditUserDataForm from "./EditUserDataForm/EditUserDataForm";
 import editIcon from "assets/images/edit-icon.svg";
+import EditUserEducationForm from "./EditUserEducationForm/EditUserEducationForm";
+import EditUserSkillForm from "./EditUserSkillForm/EditUserSkillForm";
+import EditUserCourseForm from "./EditUserCourseForm/EditUserCourseForm";
+import EditUserLinkForm from "./EditUserLinkForm/EditUserLinkForm";
+import EditUserLanguageForm from "./EditUserLanguageForm/EditUserLanguage";
+import EditUserExperienceForm from "./EditUserExperienceForm/EditUserExperienceForm";
+import EditUserExperienceDutyForm from "./EditUserExperienceDutyForm/EditUserExperienceDutyForm";
 
 const id = "EditPopupModal";
 
-var currentVariant = "";
+var currentData = {
+  variant: "",
+  element: null,
+  secondaryUuid: null,
+};
 
 export function EditPopup(props) {
   const modalRef = useRef(null);
@@ -18,9 +29,65 @@ export function EditPopup(props) {
   useEffect(() => {
     const modalElement = modalRef.current;
     const shownHandler = () => {
-      switch (currentVariant) {
+      switch (currentData.variant) {
         case "UserData":
           setContent(<EditUserDataForm forceClose={forceClose} />);
+          break;
+        case "Education":
+          setContent(
+            <EditUserEducationForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Skill":
+          setContent(
+            <EditUserSkillForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Course":
+          setContent(
+            <EditUserCourseForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Link":
+          setContent(
+            <EditUserLinkForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Language":
+          setContent(
+            <EditUserLanguageForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Experience":
+          setContent(
+            <EditUserExperienceForm
+              forceClose={forceClose}
+              element={currentData.element}
+            />
+          );
+          break;
+        case "Duty":
+          setContent(
+            <EditUserExperienceDutyForm
+              forceClose={forceClose}
+              secondaryUuid={currentData.secondaryUuid}
+            />
+          );
           break;
         default:
           setContent(
@@ -35,12 +102,14 @@ export function EditPopup(props) {
       }
 
       console.log("Modal został pokazany");
-      console.log(currentVariant);
     };
     const hiddenHandler = () => {
       console.log("Modal został ukryty");
-      currentVariant = "";
-      console.log(currentVariant);
+      currentData = {
+        variant: "",
+        element: null,
+        secondaryUuid: null,
+      };
       setContent("");
     };
 
@@ -102,7 +171,12 @@ export function EditPopup(props) {
   );
 }
 
-export function EditPopupTrigger({ variant, className }) {
+export function EditPopupTrigger({
+  variant,
+  className,
+  element = null,
+  secondaryUuid = null,
+}) {
   return (
     <button
       type="button"
@@ -115,7 +189,9 @@ export function EditPopupTrigger({ variant, className }) {
       }}
       variant={variant}
       onClick={() => {
-        currentVariant = variant;
+        currentData.variant = variant;
+        currentData.element = element;
+        currentData.secondaryUuid = secondaryUuid;
       }}
     >
       <img src={editIcon} alt="Edytuj" />
