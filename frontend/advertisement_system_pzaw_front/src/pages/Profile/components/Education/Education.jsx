@@ -1,6 +1,7 @@
 import Card from "components/common/Card/Card";
 import ListElement from "../ListElement/ListElement";
 import { useUser } from "hooks/useUser";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
 export default function Education() {
   const { user } = useUser();
@@ -17,10 +18,13 @@ export default function Education() {
               period_start={value.periodStart}
               period_end={value.periodEnd}
               level={value.educationLevel.name}
+              variant="Education"
+              element={value}
             />
           );
         })}
       </ul>
+      <EditPopupTrigger variant={"Education"} />
     </Card>
   );
 }

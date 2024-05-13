@@ -9,6 +9,10 @@ const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    refresh();
+  }, []);
+
+  const refresh = () => {
     setIsLoading(true);
     Info().then((res) => {
       if (!res.isSuccesfull) {
@@ -20,12 +24,13 @@ const UserProvider = ({ children }) => {
       setUser(res.data);
       setIsLoading(false);
     });
-  }, []);
+  };
 
   const contextValue = useMemo(
     () => ({
       user,
       setUser,
+      refresh,
     }),
     [user]
   );

@@ -1,3 +1,6 @@
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
+import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
+
 export default function ListElement(props) {
   return (
     <li class="list-group-item">
@@ -37,11 +40,19 @@ export default function ListElement(props) {
           <h4 className="fs-5 mb-0">Obowiązki: </h4>
           <ul className="duties">
             {props.duties.map((value) => {
-              return <li>{value}</li>;
+              console.log(value);
+              return (
+                <li>
+                  {value.duty}{" "}
+                  <DeleteButton variant={"Duty"} uuid={value.uuid} />
+                </li>
+              );
             })}
           </ul>
         </div>
       )}
+      <DeleteButton variant={props.variant} uuid={props.element.uuid} />
+      <EditPopupTrigger variant={props.variant} element={props.element} />
     </li>
   );
 }
