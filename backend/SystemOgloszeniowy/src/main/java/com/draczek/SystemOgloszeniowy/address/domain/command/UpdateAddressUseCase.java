@@ -21,11 +21,26 @@ public class UpdateAddressUseCase {
    * @return modified AddressDto
    */
   public Address updateDto(UpdateAddressDto dto) {
-    return update(dto);
+    return update(dto,null);
   }
 
-  private Address update(UpdateAddressDto dto) {
-    Address address = securityFacade.getLoggedInAccount().getAddress();
+  /**
+   * Method for updating Addresses.
+   *
+   * @param dto UpdateAddressDto
+   * @return modified AddressDto
+   */
+  public Address updateDto(UpdateAddressDto dto, UUID uuid) {
+    return update(dto, uuid);
+  }
+
+  private Address update(UpdateAddressDto dto, UUID uuid) {
+    Address address;
+    if(uuid == null) {
+      address = securityFacade.getLoggedInAccount().getAddress();
+    } else{
+      address = addressRepository.get(uuid);
+    }
     if (address == null) {
       address = Address.builder()
           .uuid(UUID.randomUUID())
