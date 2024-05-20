@@ -22,6 +22,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Type;
 
 /**
@@ -35,6 +36,7 @@ import org.hibernate.annotations.Type;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
 @Table(name = "companies")
+@Slf4j
 public final class Company extends AuditableEntity {
 
   @Id

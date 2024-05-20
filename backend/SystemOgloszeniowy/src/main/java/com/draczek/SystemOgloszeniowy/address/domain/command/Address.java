@@ -17,6 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Type;
 
 /**
@@ -30,6 +31,7 @@ import org.hibernate.annotations.Type;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid", callSuper = false)
 @Table(name = "addresses")
+@Slf4j
 public class Address extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,6 +62,7 @@ public class Address extends AuditableEntity {
    */
   @Override
   public void setVersion(Integer version) {
+    log.info(version + ", " + this.version);
     if (!Objects.equals(version, this.version)) {
       throw new AddressOptimisticLockException();
     }
