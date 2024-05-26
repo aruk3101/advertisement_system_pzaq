@@ -45,25 +45,25 @@ public final class Advertisement extends AuditableEntity {
   @Type(type = "org.hibernate.type.UUIDCharType")
   private UUID uuid;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "company_id")
   private Company company;
 
   private String position;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "position_level_id")
   private PositionLevel positionLevel;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "contract_type_id")
   private ContractType contractType;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "working_time_type_id")
   private WorkingTimeType workingTimeType;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "job_type_id")
   private JobType jobType;
 
