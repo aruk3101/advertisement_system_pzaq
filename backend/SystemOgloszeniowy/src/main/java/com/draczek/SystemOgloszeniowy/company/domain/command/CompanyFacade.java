@@ -35,6 +35,16 @@ public class CompanyFacade {
   }
 
   /**
+   * Method for searching companies.
+   *
+   * @param uuid UUID
+   * @return Company
+   */
+  public Company get(UUID uuid) {
+    return searchCompaniesUseCase.get(uuid);
+  }
+
+  /**
    * Method for creating companies.
    *
    * @param dto CreateCompanyDto
