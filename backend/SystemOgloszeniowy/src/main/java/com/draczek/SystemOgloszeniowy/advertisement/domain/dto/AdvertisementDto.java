@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.advertisement.domain.dto;
 
+import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.dto.AdvertisementCategoryDto;
 import com.draczek.SystemOgloszeniowy.company.domain.dto.CompanyDto;
 import com.draczek.SystemOgloszeniowy.contractType.domain.dto.ContractTypeDto;
 import com.draczek.SystemOgloszeniowy.jobType.domain.dto.JobTypeDto;
@@ -19,6 +20,8 @@ public class AdvertisementDto {
   UUID uuid;
 
   CompanyDto company;
+
+  AdvertisementCategoryDto advertisementCategory;
 
   String position;
 

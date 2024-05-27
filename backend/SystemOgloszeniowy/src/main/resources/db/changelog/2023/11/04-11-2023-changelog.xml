@@ -37,17 +37,17 @@
                 <constraints foreignKeyName="accounts_experiences_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_experiences_uuid_idx"
                      schemaName="public"
                      tableName="accounts_experiences"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -60,7 +60,8 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="accounts_experience_id" type="bigint">
-                <constraints foreignKeyName="accounts_experiences_duties_account_experience_id_fkey" references="accounts_experiences(id)"/>
+                <constraints foreignKeyName="accounts_experiences_duties_account_experience_id_fkey"
+                             references="accounts_experiences(id)"/>
             </column>
             <column name="duty" type="varchar(100)">
                 <constraints nullable="false"/>
@@ -71,20 +72,21 @@
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="accounts_experiences_duties_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="accounts_experiences_duties_user_id_last_modified_fkey"
+                             references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_experiences_duties_uuid_idx"
                      schemaName="public"
                      tableName="accounts_experiences_duties"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -108,17 +110,17 @@
                 <constraints foreignKeyName="education_levels_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="education_levels_uuid_idx"
                      schemaName="public"
                      tableName="education_levels"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -140,7 +142,8 @@
                 <constraints nullable="false"/>
             </column>
             <column name="education_level_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="accounts_education_education_level_id_fkey" references="education_levels(id)"/>
+                <constraints nullable="false" foreignKeyName="accounts_education_education_level_id_fkey"
+                             references="education_levels(id)"/>
             </column>
             <column name="specialization" type="varchar(100)"/>
             <column name="period_start" type="date">
@@ -156,17 +159,17 @@
                 <constraints foreignKeyName="accounts_education_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_education_uuid_idx"
                      schemaName="public"
                      tableName="accounts_education"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -190,17 +193,17 @@
                 <constraints foreignKeyName="language_levels_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="language_levels_uuid_idx"
                      schemaName="public"
                      tableName="language_levels"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -219,7 +222,8 @@
                 <constraints nullable="false"/>
             </column>
             <column name="language_level_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="accounts_languages_language_level_id_fkey" references="language_levels(id)"/>
+                <constraints nullable="false" foreignKeyName="accounts_languages_language_level_id_fkey"
+                             references="language_levels(id)"/>
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
@@ -230,17 +234,17 @@
                 <constraints foreignKeyName="accounts_languages_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_languages_uuid_idx"
                      schemaName="public"
                      tableName="accounts_languages"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -267,17 +271,17 @@
                 <constraints foreignKeyName="accounts_skills_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_skills_uuid_idx"
                      schemaName="public"
                      tableName="accounts_skills"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -310,17 +314,17 @@
                 <constraints foreignKeyName="accounts_certificates_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_certificates_uuid_idx"
                      schemaName="public"
                      tableName="accounts_certificates"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -350,17 +354,17 @@
                 <constraints foreignKeyName="accounts_links_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="accounts_links_uuid_idx"
                      schemaName="public"
                      tableName="accounts_links"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -389,17 +393,17 @@
                 <constraints foreignKeyName="companies_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="companies_uuid_idx"
                      schemaName="public"
                      tableName="companies"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -423,17 +427,17 @@
                 <constraints foreignKeyName="contract_types_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="contract_types_uuid_idx"
                      schemaName="public"
                      tableName="contract_types"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -457,17 +461,17 @@
                 <constraints foreignKeyName="position_levels_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="position_levels_uuid_idx"
                      schemaName="public"
                      tableName="position_levels"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -491,17 +495,17 @@
                 <constraints foreignKeyName="working_time_types_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="working_time_types_uuid_idx"
                      schemaName="public"
                      tableName="working_time_types"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -525,17 +529,52 @@
                 <constraints foreignKeyName="job_types_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="job_types_uuid_idx"
                      schemaName="public"
                      tableName="job_types"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Damian Raczek" id="04112023-create_table_advertisement_categories" runOnChange="true">
+        <createTable tableName="advertisement_categories">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="advertisement_categories_pkey" nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp with time zone"/>
+            <column name="user_id_created" type="bigint">
+                <constraints foreignKeyName="advertisement_categories_user_id_created_fkey" references="users(id)"/>
+            </column>
+            <column name="last_modified_date" type="timestamp with time zone"/>
+            <column name="user_id_last_modified" type="bigint">
+                <constraints foreignKeyName="advertisement_categories_user_id_last_modified_fkey"
+                             references="users(id)"/>
+            </column>
+            <column name="status" type="smallint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex indexName="advertisement_categories_uuid_idx"
+                     schemaName="public"
+                     tableName="advertisement_categories"
+                     unique="true">
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -548,22 +587,31 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="company_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisements_company_id_fkey" references="companies(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisements_company_id_fkey"
+                             references="companies(id)"/>
+            </column>
+            <column name="category_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="advertisements_category_id_fkey"
+                             references="advertisement_categories(id)"/>
             </column>
             <column name="position" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="position_level_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisements_position_level_id_fkey" references="position_levels(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisements_position_level_id_fkey"
+                             references="position_levels(id)"/>
             </column>
             <column name="contract_type_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisements_contract_type_id_fkey" references="contract_types(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisements_contract_type_id_fkey"
+                             references="contract_types(id)"/>
             </column>
             <column name="working_time_type_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisements_working_time_type_id_fkey" references="working_time_types(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisements_working_time_type_id_fkey"
+                             references="working_time_types(id)"/>
             </column>
             <column name="job_type_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisements_job_type_id_fkey" references="job_types(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisements_job_type_id_fkey"
+                             references="job_types(id)"/>
             </column>
             <column name="salary_from" type="int">
                 <constraints nullable="false"/>
@@ -585,57 +633,17 @@
                 <constraints foreignKeyName="advertisements_user_id_last_modified_fkey" references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="advertisements_uuid_idx"
                      schemaName="public"
                      tableName="advertisements"
                      unique="true">
-            <column name="uuid" />
-        </createIndex>
-    </changeSet>
-
-    <changeSet author="Damian Raczek" id="04112023-create_table_advertisement_categories" runOnChange="true">
-        <createTable tableName="advertisement_categories">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="advertisement_categories_pkey" nullable="false"/>
-            </column>
-            <column name="uuid" type="varchar(36)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="advertisement_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisement_categories_advertisement_id_fkey" references="advertisements(id)"/>
-            </column>
-            <column name="parent_advertisement_category_id" type="bigint">
-                <constraints nullable="true" foreignKeyName="advertisement_categories_parent_category_id_fkey" references="advertisement_categories(id)"/>
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="created_date" type="timestamp with time zone"/>
-            <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="advertisement_categories_user_id_created_fkey" references="users(id)"/>
-            </column>
-            <column name="last_modified_date" type="timestamp with time zone"/>
-            <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="advertisement_categories_user_id_last_modified_fkey" references="users(id)"/>
-            </column>
-            <column name="status" type="smallint">
-                <constraints nullable="false" />
-            </column>
-            <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
-            </column>
-        </createTable>
-        <createIndex indexName="advertisement_categories_uuid_idx"
-                     schemaName="public"
-                     tableName="advertisement_categories"
-                     unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -648,31 +656,34 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="advertisement_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisement_responsibilities_advertisement_id_fkey" references="advertisements(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisement_responsibilities_advertisement_id_fkey"
+                             references="advertisements(id)"/>
             </column>
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp with time zone"/>
             <column name="user_id_created" type="bigint">
-                <constraints foreignKeyName="advertisement_responsibilities_user_id_created_fkey" references="users(id)"/>
+                <constraints foreignKeyName="advertisement_responsibilities_user_id_created_fkey"
+                             references="users(id)"/>
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="advertisement_responsibilities_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="advertisement_responsibilities_user_id_last_modified_fkey"
+                             references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="advertisement_responsibilities_uuid_idx"
                      schemaName="public"
                      tableName="advertisement_responsibilities"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -685,7 +696,8 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="advertisement_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisement_requirements_advertisement_id_fkey" references="advertisements(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisement_requirements_advertisement_id_fkey"
+                             references="advertisements(id)"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -696,20 +708,21 @@
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="advertisement_requirements_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="advertisement_requirements_user_id_last_modified_fkey"
+                             references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="advertisement_requirements_uuid_idx"
                      schemaName="public"
                      tableName="advertisement_requirements"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 
@@ -722,7 +735,8 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="advertisement_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="advertisement_opportunities_advertisement_id_fkey" references="advertisements(id)"/>
+                <constraints nullable="false" foreignKeyName="advertisement_opportunities_advertisement_id_fkey"
+                             references="advertisements(id)"/>
             </column>
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
@@ -733,20 +747,21 @@
             </column>
             <column name="last_modified_date" type="timestamp with time zone"/>
             <column name="user_id_last_modified" type="bigint">
-                <constraints foreignKeyName="advertisement_opportunities_user_id_last_modified_fkey" references="users(id)"/>
+                <constraints foreignKeyName="advertisement_opportunities_user_id_last_modified_fkey"
+                             references="users(id)"/>
             </column>
             <column name="status" type="smallint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex indexName="advertisement_opportunities_uuid_idx"
                      schemaName="public"
                      tableName="advertisement_opportunities"
                      unique="true">
-            <column name="uuid" />
+            <column name="uuid"/>
         </createIndex>
     </changeSet>
 

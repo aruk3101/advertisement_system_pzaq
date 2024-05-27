@@ -10,6 +10,7 @@ import lombok.Value;
  */
 @Value
 public class UpdateAdvertisementDto {
+  UUID advertisementCategoryUuid;
 
   String position;
 

@@ -1,19 +1,25 @@
 package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
-import com.draczek.SystemOgloszeniowy.address.domain.command.Address;
 import com.draczek.SystemOgloszeniowy.advertisement.domain.exception.AdvertisementOptimisticLockException;
+import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategory;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
-import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.UUID;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import com.draczek.SystemOgloszeniowy.company.domain.command.Company;
 import com.draczek.SystemOgloszeniowy.contractType.domain.command.ContractType;
 import com.draczek.SystemOgloszeniowy.jobType.domain.command.JobType;
 import com.draczek.SystemOgloszeniowy.positionLevel.domain.command.PositionLevel;
 import com.draczek.SystemOgloszeniowy.workingTimeType.domain.command.WorkingTimeType;
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -48,6 +54,10 @@ public final class Advertisement extends AuditableEntity {
   @ManyToOne
   @JoinColumn(name = "company_id")
   private Company company;
+
+  @ManyToOne
+  @JoinColumn(name = "category_id")
+  private AdvertisementCategory advertisementCategory;
 
   private String position;
 

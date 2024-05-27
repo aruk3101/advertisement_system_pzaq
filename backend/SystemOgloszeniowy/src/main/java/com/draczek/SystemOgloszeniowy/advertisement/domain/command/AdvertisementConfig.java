@@ -1,5 +1,6 @@
 package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
+import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategoryFacade;
 import com.draczek.SystemOgloszeniowy.company.domain.command.CompanyFacade;
 import com.draczek.SystemOgloszeniowy.contractType.domain.command.ContractTypeFacade;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
@@ -23,7 +24,8 @@ public class AdvertisementConfig {
       PositionLevelFacade positionLevelFacade,
       ContractTypeFacade contractTypeFacade,
       WorkingTimeTypeFacade workingTimeTypeFacade,
-      JobTypeFacade jobTypeFacade
+      JobTypeFacade jobTypeFacade,
+      AdvertisementCategoryFacade advertisementCategoryFacade
   ) {
     AdvertisementMapper advertisementMapper = Mappers.getMapper(AdvertisementMapper.class);
 
@@ -39,7 +41,8 @@ public class AdvertisementConfig {
         positionLevelFacade,
         contractTypeFacade,
         workingTimeTypeFacade,
-        jobTypeFacade);
+        jobTypeFacade,
+        advertisementCategoryFacade);
 
     DeleteAdvertisementUseCase deleteAdvertisementUseCase = new DeleteAdvertisementUseCase(
         advertisementRepository);
@@ -51,7 +54,8 @@ public class AdvertisementConfig {
         positionLevelFacade,
         contractTypeFacade,
         workingTimeTypeFacade,
-        jobTypeFacade);
+        jobTypeFacade,
+        advertisementCategoryFacade);
 
     return new AdvertisementFacade(
         searchAdvertisementUseCase,

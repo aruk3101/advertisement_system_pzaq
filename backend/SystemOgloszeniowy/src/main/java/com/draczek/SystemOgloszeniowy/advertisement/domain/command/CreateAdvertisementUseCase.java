@@ -2,6 +2,7 @@ package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
 import com.draczek.SystemOgloszeniowy.advertisement.domain.dto.AdvertisementDto;
 import com.draczek.SystemOgloszeniowy.advertisement.domain.dto.CreateAdvertisementDto;
+import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategoryFacade;
 import com.draczek.SystemOgloszeniowy.common.enumerated.StatusEnum;
 import com.draczek.SystemOgloszeniowy.company.domain.command.CompanyFacade;
 import com.draczek.SystemOgloszeniowy.contractType.domain.command.ContractTypeFacade;
@@ -9,7 +10,9 @@ import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.Sec
 import com.draczek.SystemOgloszeniowy.jobType.domain.command.JobTypeFacade;
 import com.draczek.SystemOgloszeniowy.positionLevel.domain.command.PositionLevelFacade;
 import com.draczek.SystemOgloszeniowy.workingTimeType.domain.command.WorkingTimeTypeFacade;
+
 import java.util.UUID;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -26,6 +29,7 @@ public class CreateAdvertisementUseCase {
   private final ContractTypeFacade contractTypeFacade;
   private final WorkingTimeTypeFacade workingTimeTypeFacade;
   private final JobTypeFacade jobTypeFacade;
+  private final AdvertisementCategoryFacade advertisementCategoryFacade;
 
   /**
    * Method for creating Advertisement.
@@ -47,6 +51,7 @@ public class CreateAdvertisementUseCase {
         .workingHours(dto.getWorkingHours())
         .expirationDate(dto.getExpirationDate())
         .company(companyFacade.get(dto.getCompanyUuid()))
+        .advertisementCategory(advertisementCategoryFacade.getEntity(dto.getAdvertisementCategoryUuid()))
         .positionLevel(positionLevelFacade.getEntity(dto.getPositionLevelUuid()))
         .contractType(contractTypeFacade.getEntity(dto.getContractTypeUuid()))
         .workingTimeType(workingTimeTypeFacade.getEntity(dto.getWorkingTimeTypeUuid()))
