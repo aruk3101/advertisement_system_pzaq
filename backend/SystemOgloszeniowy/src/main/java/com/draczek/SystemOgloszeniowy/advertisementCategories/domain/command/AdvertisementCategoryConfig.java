@@ -1,6 +1,5 @@
 package com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command;
 
-import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.dto.CreateAdvertisementCategoryDto;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;

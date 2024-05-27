@@ -2,6 +2,7 @@ package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
 import com.draczek.SystemOgloszeniowy.advertisement.domain.exception.AdvertisementOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategory;
+import com.draczek.SystemOgloszeniowy.advertisementResponsibilities.domain.command.AdvertisementResponsibility;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.company.domain.command.Company;
 import com.draczek.SystemOgloszeniowy.contractType.domain.command.ContractType;
@@ -9,6 +10,7 @@ import com.draczek.SystemOgloszeniowy.jobType.domain.command.JobType;
 import com.draczek.SystemOgloszeniowy.positionLevel.domain.command.PositionLevel;
 import com.draczek.SystemOgloszeniowy.workingTimeType.domain.command.WorkingTimeType;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,6 +29,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 
 /**
@@ -86,6 +91,10 @@ public final class Advertisement extends AuditableEntity {
   private String workingHours;
 
   private LocalDateTime expirationDate;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "advertisement")
+  private List<AdvertisementResponsibility> advertisementResponsibilities;
 
   /**
    * Version setter.
