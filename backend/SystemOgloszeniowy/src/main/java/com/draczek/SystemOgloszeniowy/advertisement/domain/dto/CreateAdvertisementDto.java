@@ -12,6 +12,8 @@ public class CreateAdvertisementDto {
 
   UUID companyUuid;
 
+  UUID advertisementCategoryUuid;
+
   String position;
 
   UUID positionLevelUuid;

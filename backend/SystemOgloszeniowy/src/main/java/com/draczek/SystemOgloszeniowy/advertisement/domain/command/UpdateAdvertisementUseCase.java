@@ -2,7 +2,7 @@ package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
 import com.draczek.SystemOgloszeniowy.advertisement.domain.dto.AdvertisementDto;
 import com.draczek.SystemOgloszeniowy.advertisement.domain.dto.UpdateAdvertisementDto;
-import com.draczek.SystemOgloszeniowy.company.domain.command.CompanyFacade;
+import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategoryFacade;
 import com.draczek.SystemOgloszeniowy.contractType.domain.command.ContractTypeFacade;
 import com.draczek.SystemOgloszeniowy.infrastructure.security.domain.command.SecurityFacade;
 import com.draczek.SystemOgloszeniowy.jobType.domain.command.JobTypeFacade;
@@ -23,6 +23,7 @@ public class UpdateAdvertisementUseCase {
   private final ContractTypeFacade contractTypeFacade;
   private final WorkingTimeTypeFacade workingTimeTypeFacade;
   private final JobTypeFacade jobTypeFacade;
+  private final AdvertisementCategoryFacade advertisementCategoryFacade;
 
   /**
    * Method for updating Advertisement.
@@ -43,6 +44,7 @@ public class UpdateAdvertisementUseCase {
     advertisement.setWorkingDays(dto.getWorkingDays());
     advertisement.setWorkingHours(dto.getWorkingHours());
     advertisement.setExpirationDate(dto.getExpirationDate());
+    advertisement.setAdvertisementCategory(advertisementCategoryFacade.getEntity(dto.getAdvertisementCategoryUuid()));
     advertisement.setPositionLevel(positionLevelFacade.getEntity(dto.getPositionLevelUuid()));
     advertisement.setContractType(contractTypeFacade.getEntity(dto.getContractTypeUuid()));
     advertisement.setWorkingTimeType(workingTimeTypeFacade.getEntity(dto.getWorkingTimeTypeUuid()));
