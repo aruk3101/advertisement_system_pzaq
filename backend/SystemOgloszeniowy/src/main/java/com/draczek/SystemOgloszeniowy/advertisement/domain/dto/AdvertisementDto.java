@@ -1,6 +1,7 @@
 package com.draczek.SystemOgloszeniowy.advertisement.domain.dto;
 
 import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.dto.AdvertisementCategoryDto;
+import com.draczek.SystemOgloszeniowy.advertisementRequirements.domain.dto.AdvertisementRequirementDto;
 import com.draczek.SystemOgloszeniowy.advertisementResponsibilities.domain.dto.AdvertisementResponsibilityDto;
 import com.draczek.SystemOgloszeniowy.company.domain.dto.CompanyDto;
 import com.draczek.SystemOgloszeniowy.contractType.domain.dto.ContractTypeDto;
@@ -46,6 +47,8 @@ public class AdvertisementDto {
   LocalDateTime expirationDate;
 
   List<AdvertisementResponsibilityDto> advertisementResponsibilities;
+
+  List<AdvertisementRequirementDto> advertisementRequirements;
 
   @NotNull
   Integer version;
