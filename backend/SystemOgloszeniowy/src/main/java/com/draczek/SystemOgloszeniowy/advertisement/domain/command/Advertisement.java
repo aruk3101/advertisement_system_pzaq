@@ -2,6 +2,7 @@ package com.draczek.SystemOgloszeniowy.advertisement.domain.command;
 
 import com.draczek.SystemOgloszeniowy.advertisement.domain.exception.AdvertisementOptimisticLockException;
 import com.draczek.SystemOgloszeniowy.advertisementCategories.domain.command.AdvertisementCategory;
+import com.draczek.SystemOgloszeniowy.advertisementRequirements.domain.command.AdvertisementRequirement;
 import com.draczek.SystemOgloszeniowy.advertisementResponsibilities.domain.command.AdvertisementResponsibility;
 import com.draczek.SystemOgloszeniowy.common.entity.AuditableEntity;
 import com.draczek.SystemOgloszeniowy.company.domain.command.Company;
@@ -95,6 +96,10 @@ public final class Advertisement extends AuditableEntity {
   @LazyCollection(LazyCollectionOption.FALSE)
   @OneToMany(mappedBy = "advertisement")
   private List<AdvertisementResponsibility> advertisementResponsibilities;
+
+  @LazyCollection(LazyCollectionOption.FALSE)
+  @OneToMany(mappedBy = "advertisement")
+  private List<AdvertisementRequirement> advertisementRequirements;
 
   /**
    * Version setter.
