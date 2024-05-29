@@ -5,10 +5,8 @@ import com.draczek.SystemOgloszeniowy.advertisementRequirements.domain.dto.Adver
 import com.draczek.SystemOgloszeniowy.advertisementRequirements.domain.dto.CreateAdvertisementRequirementDto;
 import com.draczek.SystemOgloszeniowy.advertisementRequirements.domain.dto.UpdateAdvertisementRequirementDto;
 import io.swagger.v3.oas.annotations.Operation;
-
 import java.util.List;
 import java.util.UUID;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
