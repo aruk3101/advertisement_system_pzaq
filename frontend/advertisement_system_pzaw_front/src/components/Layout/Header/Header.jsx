@@ -29,7 +29,7 @@ function Header(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <Link to={"/"} className="nav-link text-white">
+              <Link to={"/advertisements"} className="nav-link text-white">
                 Ogłoszenia
               </Link>
             </li>

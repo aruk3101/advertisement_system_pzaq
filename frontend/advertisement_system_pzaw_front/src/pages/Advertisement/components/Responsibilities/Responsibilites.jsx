@@ -2,6 +2,7 @@ import Card from "components/common/Card/Card";
 import ListItem from "../ListItem/ListItem";
 
 export default function Responsibilities({ responsibilites }) {
+  console.log(responsibilites);
   return (
     <Card header="Obowiązki" id="obowiazki" bootstrapFontsize="fs-3">
       {responsibilites.map((value) => {

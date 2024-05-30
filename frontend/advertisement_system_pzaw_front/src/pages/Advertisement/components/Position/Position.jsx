@@ -3,10 +3,10 @@ import Attribute from "components/common/Attribute/Attribute";
 import SvgButton from "components/common/SvgButton/SvgButton";
 import defaultCompanyIcon from "assets/images/defaultCompanyPfp.png";
 
-export default function Position() {
+export default function Position({ advertisement }) {
   return (
     <Card
-      header="Stanowisko"
+      header={advertisement.position}
       id="stanowisko"
       customMargin="mb-3 mt-5"
       beforeContent={
@@ -63,13 +63,13 @@ export default function Position() {
         </div>
       }
     >
-      <span>Nazwa firmy</span>
+      <span>{advertisement.company.name}</span>
       <hr />
       <div className="container-flex">
         <div className="row">
           <div className="col-12 col-sm-6">
             <Attribute
-              header="Umowa o pracę"
+              header={advertisement.contractType.name}
               svgIcon={
                 <svg
                   width="30px"
@@ -94,7 +94,7 @@ export default function Position() {
           <div className="col-12 col-sm-6">
             <Attribute
               header="Ważna jeszcze x dni"
-              subHeader="do 01.01.2024"
+              subHeader={"do " + advertisement.expirationDate}
               svgIcon={
                 <svg
                   width="30px"
@@ -130,7 +130,7 @@ export default function Position() {
           </div>
           <div className="col-12 col-sm-6">
             <Attribute
-              header="Pełny etat"
+              header={advertisement.workingTimeType.name}
               svgIcon={
                 <svg
                   width="30px"
@@ -156,7 +156,7 @@ export default function Position() {
           </div>
           <div className="col-12 col-sm-6">
             <Attribute
-              header="Specjalista"
+              header={advertisement.positionLevel.name}
               svgIcon={
                 <svg
                   width="30px"
@@ -175,7 +175,7 @@ export default function Position() {
           </div>
           <div className="col-12 col-sm-6">
             <Attribute
-              header="Praca stacjonarna"
+              header={advertisement.jobType.name}
               svgIcon={
                 <svg
                   fill="var(--custom_color_dark)"
@@ -220,7 +220,7 @@ export default function Position() {
         <div className="row">
           <div className="col-12 col-sm-6">
             <Attribute
-              header="dni robocze (poniedziałek - piątek)"
+              header={advertisement.workingDays}
               svgIcon={
                 <svg
                   width="30px"
@@ -246,7 +246,7 @@ export default function Position() {
           </div>
           <div className="col-12 col-sm-6">
             <Attribute
-              header="9:00-17:00"
+              header={advertisement.workingHours}
               svgIcon={
                 <svg
                   width="30px"

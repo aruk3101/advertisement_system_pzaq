@@ -12,9 +12,13 @@ import AdvertisementUuid from "./components/AdvertisementUuid/AdvertisementUuid"
 import ApplyButton from "./components/ApplyButton/ApplyButton";
 import SimiliarOffersCard from "./components/SimiliarOffersCard/SimiliarOffersCard";
 import { shadeColor } from "utils/color";
+import useAdvertisement from "hooks/useAdvertisement";
 
 function Advertisement() {
   let { id } = useParams();
+  const { advertisement, loading, setLoading, error, setError } =
+    useAdvertisement(id);
+
   let iframeLink =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.634152096076!2d20.4174095109076!3d49.698861941076736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47161cd0d7dfe0e5%3A0x8b8e90f28d06c112!2zWmVzcMOzxYIgU3prw7PFgiBUZWNobmljem55Y2ggaSBPZ8OzbG5va3N6dGHFgmNhY3ljaCBpbS4gSmFuYSBQYXfFgmEgSUk!5e0!3m2!1spl!2spl!4v1703878046643!5m2!1spl!2spl";
   let color;
@@ -55,12 +59,17 @@ function Advertisement() {
     "--custom_color_dark",
     shadeColor(color, -40)
   );
+  if (error != null) return error;
+  if (loading == true) return "Loading...";
+
+  console.log(advertisement);
+
   return (
     <div className="bg-primary-subtle">
       <div className="container gx-5 gy-2 p-1 p-sm-2 p-md-4">
         <div className="row">
           <div className="col-12 col-xl-9">
-            <Position />
+            <Position advertisement={advertisement} />
             <NavigationCard
               data={[
                 { href: "#stanowisko", header: "Stanowisko" },
@@ -70,10 +79,16 @@ function Advertisement() {
                 { href: "#benefity", header: "Benefity, możliwości" },
               ]}
             />
-            <Localization iframeLink={iframeLink} />
-            <Responsibilities responsibilites={responsibilites} />
-            <Requirements requirements={requirements} />
-            <Opportunities opportunities={opportunities} />
+            <Localization iframeLink={advertisement.company.iframeHyperlink} />
+            <Responsibilities
+              responsibilites={advertisement.advertisementResponsibilities}
+            />
+            <Requirements
+              requirements={advertisement.advertisementRequirements}
+            />
+            <Opportunities
+              opportunities={advertisement.advertisementOpportunities}
+            />
             <AdvertisementUuid id={id} />
           </div>
           <div className="col-12 col-xl-3 position-relative">

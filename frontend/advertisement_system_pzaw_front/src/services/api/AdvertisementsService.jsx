@@ -18,10 +18,21 @@ function handleErrors(response) {
 }
 
 export function GetAdvertisements(page, size) {
-  console.log(page + ", " + size);
   return request({
     method: "get",
     url: BASE_URL + "?page=" + page + "&size=" + size,
+  }).then((res) => {
+    if (!res.isSuccesfull) {
+      return handleErrors(res);
+    }
+    return res;
+  });
+}
+
+export function GetAdvertisement(uuid) {
+  return request({
+    method: "get",
+    url: combine(uuid),
   }).then((res) => {
     if (!res.isSuccesfull) {
       return handleErrors(res);
