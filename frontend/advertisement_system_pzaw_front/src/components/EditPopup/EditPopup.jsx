@@ -8,6 +8,11 @@ import EditUserLinkForm from "./EditUserLinkForm/EditUserLinkForm";
 import EditUserLanguageForm from "./EditUserLanguageForm/EditUserLanguage";
 import EditUserExperienceForm from "./EditUserExperienceForm/EditUserExperienceForm";
 import EditUserExperienceDutyForm from "./EditUserExperienceDutyForm/EditUserExperienceDutyForm";
+import EditCompanyForm from "./EditCompanyForm/EditCompanyForm";
+import EditAdvertisementForm from "./EditAdvertisementForm/EditAdvertisementForm";
+import EditResponsibilityForm from "./EditResponsibilityForm/EditResponsibilityForm";
+import EditRequirementForm from "./EditRequirementForm/EditRequirementForm";
+import EditOpportunityForm from "./EditOpportunityForm/EditOpportunity";
 
 const id = "EditPopupModal";
 
@@ -15,6 +20,7 @@ var currentData = {
   variant: "",
   element: null,
   secondaryUuid: null,
+  refreshMethod: null,
 };
 
 export function EditPopup(props) {
@@ -89,6 +95,51 @@ export function EditPopup(props) {
             />
           );
           break;
+        case "company":
+          setContent(
+            <EditCompanyForm
+              forceClose={forceClose}
+              element={currentData.element}
+              refreshMethod={currentData.refreshMethod}
+            />
+          );
+          break;
+        case "advertisement":
+          setContent(
+            <EditAdvertisementForm
+              forceClose={forceClose}
+              element={currentData.element}
+              refreshMethod={currentData.refreshMethod}
+            />
+          );
+          break;
+        case "responsibility":
+          setContent(
+            <EditResponsibilityForm
+              forceClose={forceClose}
+              uuid={currentData.secondaryUuid}
+              refreshMethod={currentData.refreshMethod}
+            />
+          );
+          break;
+        case "requirement":
+          setContent(
+            <EditRequirementForm
+              forceClose={forceClose}
+              uuid={currentData.secondaryUuid}
+              refreshMethod={currentData.refreshMethod}
+            />
+          );
+          break;
+        case "opportunity":
+          setContent(
+            <EditOpportunityForm
+              forceClose={forceClose}
+              uuid={currentData.secondaryUuid}
+              refreshMethod={currentData.refreshMethod}
+            />
+          );
+          break;
         default:
           setContent(
             <>
@@ -109,6 +160,7 @@ export function EditPopup(props) {
         variant: "",
         element: null,
         secondaryUuid: null,
+        refreshMethod: null,
       };
       setContent("");
     };
@@ -176,6 +228,7 @@ export function EditPopupTrigger({
   className,
   element = null,
   secondaryUuid = null,
+  refreshMethod = null,
 }) {
   return (
     <button
@@ -192,6 +245,7 @@ export function EditPopupTrigger({
         currentData.variant = variant;
         currentData.element = element;
         currentData.secondaryUuid = secondaryUuid;
+        currentData.refreshMethod = refreshMethod;
       }}
     >
       <img src={editIcon} alt="Edytuj" />

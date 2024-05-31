@@ -1,6 +1,6 @@
 import { request } from "./AxiosService";
 
-const BASE_URL = "advertisements/";
+const BASE_URL = "advertisementRequirements/";
 
 function combine(url) {
   return BASE_URL + url;
@@ -8,6 +8,7 @@ function combine(url) {
 
 function handleErrors(response) {
   switch (response.status) {
+    //kolejne przypadki
     default:
       return {
         ...response,
@@ -17,31 +18,7 @@ function handleErrors(response) {
   }
 }
 
-export function GetAdvertisements(page, size) {
-  return request({
-    method: "get",
-    url: BASE_URL + "?page=" + page + "&size=" + size,
-  }).then((res) => {
-    if (!res.isSuccesfull) {
-      return handleErrors(res);
-    }
-    return res;
-  });
-}
-
-export function GetAdvertisement(uuid) {
-  return request({
-    method: "get",
-    url: combine(uuid),
-  }).then((res) => {
-    if (!res.isSuccesfull) {
-      return handleErrors(res);
-    }
-    return res;
-  });
-}
-
-export function AddAdvertisement(data) {
+export function AddRequirement(data) {
   return request({
     method: "post",
     url: BASE_URL,
@@ -54,11 +31,10 @@ export function AddAdvertisement(data) {
   });
 }
 
-export function EditAdvertisement(data, uuid) {
+export function DeleteRequirement(uuid) {
   return request({
-    method: "put",
+    method: "delete",
     url: combine(uuid),
-    data: data,
   }).then((res) => {
     if (!res.isSuccesfull) {
       return handleErrors(res);

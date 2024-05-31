@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { GetAdvertisements } from "services/api/AdvertisementsService";
+import { GetCompanies } from "services/api/CompanyService";
 
-const useAdvertisements = (initialPage = 0, initialSize = 10) => {
+const useCompanies = (initialPage = 0, initialSize = 10) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,17 +10,17 @@ const useAdvertisements = (initialPage = 0, initialSize = 10) => {
   const [size, setSize] = useState(initialSize);
   const [totalPages, setTotalPages] = useState(0);
 
-  const fetchItems = () => {
-    setLoading(true);
-    setError(null);
-    GetAdvertisements(page, size).then((res) => {
-      handle(res);
-    });
-  };
-
   useEffect(() => {
     fetchItems();
   }, [page, size]);
+
+  const fetchItems = () => {
+    setLoading(true);
+    setError(null);
+    GetCompanies(page, size).then((res) => {
+      handle(res);
+    });
+  };
 
   const handle = (res) => {
     if (res.isSuccesfull) {
@@ -43,4 +44,4 @@ const useAdvertisements = (initialPage = 0, initialSize = 10) => {
   };
 };
 
-export default useAdvertisements;
+export default useCompanies;

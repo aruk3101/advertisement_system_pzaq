@@ -1,13 +1,23 @@
 import Card from "components/common/Card/Card";
 import ListItem from "../ListItem/ListItem";
+import { useAuth } from "hooks/useAuth";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
-export default function Opportunities({ opportunities }) {
+export default function Opportunities({
+  opportunities,
+  refreshMethod = null,
+  advertisementUuid = null,
+}) {
+  const { roles } = useAuth();
   return (
     <Card header="Benefity, możliwości" id="benefity" bootstrapFontsize="fs-3">
       {opportunities.map((value) => {
         return (
           <ListItem
+            variant="Opportunity"
+            uuid={value.uuid}
             text={value.name}
+            refreshMethod={refreshMethod}
             svg={
               <svg
                 width="30px"
@@ -42,6 +52,15 @@ export default function Opportunities({ opportunities }) {
           />
         );
       })}
+      {roles.includes("ROLE_ADMIN") ? (
+        <EditPopupTrigger
+          variant="opportunity"
+          secondaryUuid={advertisementUuid}
+          refreshMethod={refreshMethod}
+        ></EditPopupTrigger>
+      ) : (
+        ""
+      )}
     </Card>
   );
 }

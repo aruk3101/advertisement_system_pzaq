@@ -4,7 +4,6 @@ import com.draczek.SystemOgloszeniowy.company.domain.dto.CompanyDto;
 import com.draczek.SystemOgloszeniowy.company.domain.dto.CreateCompanyDto;
 import com.draczek.SystemOgloszeniowy.company.domain.dto.UpdateCompanyDto;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.sql.Update;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
@@ -40,9 +39,20 @@ public class CompanyFacade {
    * @param uuid UUID
    * @return Company
    */
-  public Company get(UUID uuid) {
+  public Company getEntity(UUID uuid) {
+    return searchCompaniesUseCase.getEntity(uuid);
+  }
+
+  /**
+   * Method for searching companies by UUID.
+   *
+   * @param uuid UUID
+   * @return CompanyDto
+   */
+  public CompanyDto get(UUID uuid) {
     return searchCompaniesUseCase.get(uuid);
   }
+
 
   /**
    * Method for creating companies.

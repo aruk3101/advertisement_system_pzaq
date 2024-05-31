@@ -1,7 +1,7 @@
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 import Card from "components/common/Card/Card";
 import { useUser } from "hooks/useUser";
-import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
+import { DeleteButtonUser } from "components/common/DeleteButtonUser/DeleteButtonUser";
 
 export default function Skills() {
   const { user } = useUser();
@@ -13,7 +13,7 @@ export default function Skills() {
           return (
             <li className="list-group-item">
               {value.skillName}
-              <DeleteButton variant="Skill" uuid={value.uuid} />
+              <DeleteButtonUser variant="Skill" uuid={value.uuid} />
               <EditPopupTrigger variant="Skill" element={value} />
             </li>
           );

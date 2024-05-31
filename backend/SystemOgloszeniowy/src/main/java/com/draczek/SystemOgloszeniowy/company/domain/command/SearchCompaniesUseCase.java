@@ -25,7 +25,11 @@ public class SearchCompaniesUseCase {
     return companyRepository.findAll(pageable).map(companyMapper::toDto);
   }
 
-  public Company get(UUID uuid) {
+  public Company getEntity(UUID uuid) {
     return companyRepository.get(uuid);
+  }
+
+  public CompanyDto get(UUID uuid) {
+    return companyMapper.toDto(getEntity(uuid));
   }
 }

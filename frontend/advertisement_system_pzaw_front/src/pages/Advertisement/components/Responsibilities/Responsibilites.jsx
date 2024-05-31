@@ -1,14 +1,23 @@
 import Card from "components/common/Card/Card";
 import ListItem from "../ListItem/ListItem";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
+import { useAuth } from "hooks/useAuth";
 
-export default function Responsibilities({ responsibilites }) {
-  console.log(responsibilites);
+export default function Responsibilities({
+  responsibilites,
+  refreshMethod = null,
+  advertisementUuid = null,
+}) {
+  const { roles } = useAuth();
   return (
     <Card header="Obowiązki" id="obowiazki" bootstrapFontsize="fs-3">
       {responsibilites.map((value) => {
         return (
           <ListItem
+            variant="Responsibility"
+            uuid={value.uuid}
             text={value.name}
+            refreshMethod={refreshMethod}
             svg={
               <svg
                 fill="var(--custom_color_dark, #000000)"
@@ -26,6 +35,15 @@ export default function Responsibilities({ responsibilites }) {
           />
         );
       })}
+      {roles.includes("ROLE_ADMIN") ? (
+        <EditPopupTrigger
+          variant="responsibility"
+          secondaryUuid={advertisementUuid}
+          refreshMethod={refreshMethod}
+        ></EditPopupTrigger>
+      ) : (
+        ""
+      )}
     </Card>
   );
 }

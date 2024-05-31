@@ -1,5 +1,5 @@
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
-import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
+import { DeleteButtonUser } from "components/common/DeleteButtonUser/DeleteButtonUser";
 
 export default function ListElement(props) {
   return (
@@ -44,14 +44,14 @@ export default function ListElement(props) {
               return (
                 <li>
                   {value.duty}{" "}
-                  <DeleteButton variant={"Duty"} uuid={value.uuid} />
+                  <DeleteButtonUser variant={"Duty"} uuid={value.uuid} />
                 </li>
               );
             })}
           </ul>
         </div>
       )}
-      <DeleteButton variant={props.variant} uuid={props.element.uuid} />
+      <DeleteButtonUser variant={props.variant} uuid={props.element.uuid} />
       <EditPopupTrigger variant={props.variant} element={props.element} />
     </li>
   );

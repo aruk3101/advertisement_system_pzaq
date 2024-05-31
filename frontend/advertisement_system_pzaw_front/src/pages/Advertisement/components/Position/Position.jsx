@@ -2,8 +2,11 @@ import Card from "components/common/Card/Card";
 import Attribute from "components/common/Attribute/Attribute";
 import SvgButton from "components/common/SvgButton/SvgButton";
 import defaultCompanyIcon from "assets/images/defaultCompanyPfp.png";
+import { useAuth } from "hooks/useAuth";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
-export default function Position({ advertisement }) {
+export default function Position({ advertisement, refreshMethod = null }) {
+  const { roles } = useAuth();
   return (
     <Card
       header={advertisement.position}
@@ -271,6 +274,17 @@ export default function Position({ advertisement }) {
             />
           </div>
         </div>
+        {roles.includes("ROLE_ADMIN") ? (
+          <div className="row">
+            <EditPopupTrigger
+              variant="advertisement"
+              element={advertisement}
+              refreshMethod={refreshMethod}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </Card>
   );

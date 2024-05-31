@@ -3,7 +3,7 @@ import Card from "components/common/Card/Card";
 import InputGroup from "components/common/InputGroup/InputGroup";
 import { useUser } from "hooks/useUser";
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
-import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
+import { DeleteButtonUser } from "components/common/DeleteButtonUser/DeleteButtonUser";
 
 export default function Languages() {
   const { user } = useUser();
@@ -24,7 +24,7 @@ export default function Languages() {
               aria_label={"language-addon-" + index}
               value={value.language}
             />
-            <DeleteButton variant="Language" uuid={value.uuid} />
+            <DeleteButtonUser variant="Language" uuid={value.uuid} />
             <EditPopupTrigger variant="Language" element={value} />
           </>
         );

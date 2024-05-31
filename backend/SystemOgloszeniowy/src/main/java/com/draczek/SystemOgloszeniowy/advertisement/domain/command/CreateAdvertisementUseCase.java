@@ -50,7 +50,7 @@ public class CreateAdvertisementUseCase {
         .workingDays(dto.getWorkingDays())
         .workingHours(dto.getWorkingHours())
         .expirationDate(dto.getExpirationDate())
-        .company(companyFacade.get(dto.getCompanyUuid()))
+        .company(companyFacade.getEntity(dto.getCompanyUuid()))
         .advertisementCategory(advertisementCategoryFacade.getEntity(dto.getAdvertisementCategoryUuid()))
         .positionLevel(positionLevelFacade.getEntity(dto.getPositionLevelUuid()))
         .contractType(contractTypeFacade.getEntity(dto.getContractTypeUuid()))

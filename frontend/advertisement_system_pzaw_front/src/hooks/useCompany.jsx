@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { GetAdvertisement } from "services/api/AdvertisementsService";
+import { GetCompany } from "services/api/CompanyService";
 
-const useAdvertisement = (uuid = null) => {
+const useCompany = (uuid = null) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [advertisement, setAdvertisement] = useState();
+  const [company, setCompany] = useState();
 
   useEffect(() => {
     if (uuid == null) return;
@@ -14,15 +14,17 @@ const useAdvertisement = (uuid = null) => {
   const fetchItems = () => {
     setLoading(true);
     setError(null);
-    GetAdvertisement(uuid).then((res) => {
+    GetCompany(uuid).then((res) => {
+      console.log(res);
       handle(res);
     });
+    return company;
   };
 
   const handle = (res) => {
     setLoading(false);
     if (res.isSuccesfull) {
-      setAdvertisement(res.data);
+      setCompany(res.data);
       return;
     } else {
       if (res.status == 404) {
@@ -32,7 +34,7 @@ const useAdvertisement = (uuid = null) => {
   };
 
   return {
-    advertisement,
+    company,
     loading,
     setLoading,
     error,
@@ -41,4 +43,4 @@ const useAdvertisement = (uuid = null) => {
   };
 };
 
-export default useAdvertisement;
+export default useCompany;

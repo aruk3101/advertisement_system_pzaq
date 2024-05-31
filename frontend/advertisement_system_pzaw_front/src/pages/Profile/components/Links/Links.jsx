@@ -2,7 +2,7 @@ import Card from "components/common/Card/Card";
 import { Link } from "react-router-dom";
 import { useUser } from "hooks/useUser";
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
-import { DeleteButton } from "components/common/DeleteButton/DeleteButton";
+import { DeleteButtonUser } from "components/common/DeleteButtonUser/DeleteButtonUser";
 
 export default function Links() {
   const { user } = useUser();
@@ -24,7 +24,7 @@ export default function Links() {
               >
                 {value.name}
               </Link>
-              <DeleteButton variant="Link" uuid={value.uuid} />
+              <DeleteButtonUser variant="Link" uuid={value.uuid} />
               <EditPopupTrigger variant="Link" element={value} />
             </li>
           );

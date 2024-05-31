@@ -1,13 +1,23 @@
 import Card from "components/common/Card/Card";
 import ListItem from "../ListItem/ListItem";
+import { useAuth } from "hooks/useAuth";
+import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
-export default function Requirements({ requirements }) {
+export default function Requirements({
+  requirements,
+  refreshMethod = null,
+  advertisementUuid = null,
+}) {
+  const { roles } = useAuth();
   return (
     <Card header="Wymagania" id="wymagania" bootstrapFontsize="fs-3">
       {requirements.map((value) => {
         return (
           <ListItem
+            variant="Requirement"
+            uuid={value.uuid}
             text={value.name}
+            refreshMethod={refreshMethod}
             svg={
               <svg
                 fill="var(--custom_color_dark)"
@@ -50,6 +60,15 @@ export default function Requirements({ requirements }) {
           />
         );
       })}
+      {roles.includes("ROLE_ADMIN") ? (
+        <EditPopupTrigger
+          variant="requirement"
+          secondaryUuid={advertisementUuid}
+          refreshMethod={refreshMethod}
+        ></EditPopupTrigger>
+      ) : (
+        ""
+      )}
     </Card>
   );
 }

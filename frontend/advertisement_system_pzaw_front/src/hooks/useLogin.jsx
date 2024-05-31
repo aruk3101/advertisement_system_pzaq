@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import AlertList from "components/common/AlertList/AlertList";
 
 export default function () {
-  const { setToken } = useAuth();
+  const { setToken, setRoles } = useAuth();
   const navigate = useNavigate();
   const [errorAlerts, setErrorAlerts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +25,7 @@ export default function () {
         return;
       }
       setToken(res.data.token);
+      setRoles(res.data.roles);
       navigate("/", { replace: true });
       toast.success("Pomyślnie zalogowano", {
         position: toast.POSITION.BOTTOM_RIGHT,
