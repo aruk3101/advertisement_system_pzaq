@@ -6,9 +6,11 @@ import Submit from "components/common/Submit/Submit";
 import SpinnerView from "components/common/SpinnerView/SpinnerView";
 import Select from "components/common/Select/Select";
 import useAddEditUserLanguage from "hooks/useAddEditUserLanguage";
+import useLanguageLevels from "hooks/useLanguageLevels";
 
 export default function EditUserLanguageForm({ forceClose, element }) {
   const { handleSubmit, Alerts, isLoading } = useAddEditUserLanguage();
+  const { languageLevels } = useLanguageLevels();
   var dto = {
     language: "",
     languageLevelUuid: "",
@@ -16,6 +18,7 @@ export default function EditUserLanguageForm({ forceClose, element }) {
   };
   if (element != null) {
     dto = element;
+    dto.languageLevelUuid = element.languageLevel.uuid;
   }
   const { data, handleChange } = useForm(dto);
 
@@ -27,7 +30,19 @@ export default function EditUserLanguageForm({ forceClose, element }) {
           <Form
             className="col"
             method="post"
-            onSubmit={(event) => handleSubmit(event, data, forceClose, element)}
+            onSubmit={(event) => {
+              if (
+                data.languageLevelUuid == null ||
+                data.languageLevelUuid == ""
+              )
+                data.languageLevelUuid = languageLevels[0];
+              if (
+                data.languageLevelUuid != null &&
+                typeof data.languageLevelUuid === "object"
+              )
+                data.languageLevelUuid = data.languageLevelUuid.uuid;
+              handleSubmit(event, data, forceClose, element);
+            }}
           >
             <Input
               placeholder="Język"
@@ -45,16 +60,12 @@ export default function EditUserLanguageForm({ forceClose, element }) {
               value={data["languageLevelUuid"]}
               handleChange={handleChange}
               required="required"
-              options={[
-                {
-                  value: "13e2e17c-87e0-4dec-ac9f-8f743aae6c4f",
-                  name: "A1",
-                },
-                {
-                  value: "cc2234bb-c55e-49d7-853e-b552bb908900",
-                  name: "A2",
-                },
-              ]}
+              options={languageLevels.map((ll) => {
+                return {
+                  value: ll.uuid,
+                  name: ll.name,
+                };
+              })}
             ></Select>
             <Submit value="Prześlij" />
             <Alerts />

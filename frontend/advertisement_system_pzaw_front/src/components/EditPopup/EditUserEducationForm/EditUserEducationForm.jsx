@@ -6,9 +6,11 @@ import Submit from "components/common/Submit/Submit";
 import SpinnerView from "components/common/SpinnerView/SpinnerView";
 import Select from "components/common/Select/Select";
 import useAddEditUserEducation from "hooks/useAddEditUserEducation";
+import useEducationLevels from "hooks/useEducationLevels";
 
 export default function EditUserEducationForm({ forceClose, element }) {
   const { handleSubmit, Alerts, isLoading } = useAddEditUserEducation();
+  const { educationLevels } = useEducationLevels();
   var dto = {
     schoolName: "",
     schoolLocation: "",
@@ -20,9 +22,11 @@ export default function EditUserEducationForm({ forceClose, element }) {
   };
   if (element != null) {
     dto = element;
+    dto.educationLevelUuid = element.educationLevel.uuid;
+    dto.periodStart = element.periodStart.split("T")[0];
+    dto.periodEnd = element.periodStart.split("T")[0];
   }
   const { data, handleChange } = useForm(dto);
-
   return (
     <div className="container-md">
       <SpinnerView isLoading={isLoading}>
@@ -31,7 +35,19 @@ export default function EditUserEducationForm({ forceClose, element }) {
           <Form
             className="col"
             method="post"
-            onSubmit={(event) => handleSubmit(event, data, forceClose, element)}
+            onSubmit={(event) => {
+              if (
+                data.educationLevelUuid == null ||
+                data.educationLevelUuid == ""
+              )
+                data.educationLevelUuid = educationLevels[0];
+              if (
+                data.educationLevelUuid != null &&
+                typeof data.educationLevelUuid === "object"
+              )
+                data.educationLevelUuid = data.educationLevelUuid.uuid;
+              handleSubmit(event, data, forceClose, element);
+            }}
           >
             <Input
               placeholder="Nazwa szkoły"
@@ -52,22 +68,15 @@ export default function EditUserEducationForm({ forceClose, element }) {
               required="required"
             />
             <Select
-              placeholder="Adres"
+              placeholder="Poziom wykształcenia"
               name="educationLevelUuid"
               id="educationLevelUuid"
               value={data["educationLevelUuid"]}
               handleChange={handleChange}
               required="required"
-              options={[
-                {
-                  value: "70d532aa-94d6-45bb-bf79-6236d21c36b0",
-                  name: "Podstawowe",
-                },
-                {
-                  value: "4dde0ae4-c4b0-4739-8980-e6a933038af9",
-                  name: "Średnie",
-                },
-              ]}
+              options={educationLevels.map((el) => {
+                return { value: el.uuid, name: el.name };
+              })}
             ></Select>
             <Input
               placeholder="Specjalizacja"

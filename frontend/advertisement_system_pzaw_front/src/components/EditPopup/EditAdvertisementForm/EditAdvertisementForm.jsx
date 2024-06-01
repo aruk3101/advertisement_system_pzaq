@@ -41,21 +41,24 @@ export default function EditAdvertisementForm({
     version: 0,
   };
   if (element != null) {
-    dto.companyUuid = element.companyUuid;
-    dto.advertisementCategoryUuid = element.advertisementCategoryUuid;
+    dto.companyUuid = element.company.uuid;
+    dto.advertisementCategoryUuid = element.advertisementCategory.uuid;
     dto.position = element.position;
-    dto.positionLevelUuid = element.positionLevelUuid;
-    dto.contractTypeUuid = element.contractTypeUuid;
-    dto.workingTimeTypeUuid = element.workingTimeTypeUuid;
-    dto.jobTypeUuid = element.jobTypeUuid;
+    dto.positionLevelUuid = element.positionLevel.uuid;
+    dto.contractTypeUuid = element.contractType.uuid;
+    dto.workingTimeTypeUuid = element.workingTimeType.uuid;
+    dto.jobTypeUuid = element.jobType.uuid;
     dto.salaryFrom = element.salaryFrom;
     dto.salaryTo = element.salaryTo;
     dto.workingDays = element.workingDays;
     dto.workingHours = element.workingHours;
-    dto.expirationDate = element.expirationDate;
+    dto.expirationDate = element.expirationDate.split("T")[0];
     dto.version = element.version;
   }
   const { data, handleChange } = useForm(dto);
+
+  console.log(dto);
+  console.log(element);
 
   return (
     <div className="container-md">

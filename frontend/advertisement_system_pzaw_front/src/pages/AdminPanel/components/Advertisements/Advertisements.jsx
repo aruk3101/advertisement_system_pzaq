@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "hooks/useAuth";
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 import useAdvertisements from "hooks/useAdvertisements";
+import AdvertisementItem from "components/AdvertisementItem/AdvertisementItem";
 
 function Advertisements() {
   const { roles } = useAuth();
@@ -35,13 +36,7 @@ function Advertisements() {
           {items.map((item) => (
             <a href={"http://localhost:3000/advertisement/" + item.uuid}>
               <hr></hr>
-              <ol>
-                <li>{item.position}</li>
-                <li>{item.companyName}</li>
-                <li>
-                  {item.salaryFrom} - {item.salaryTo}
-                </li>
-              </ol>
+              <AdvertisementItem advertisement={item} />
               <hr></hr>
             </a>
           ))}

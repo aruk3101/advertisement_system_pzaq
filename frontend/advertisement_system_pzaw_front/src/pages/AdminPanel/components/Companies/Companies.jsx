@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "hooks/useAuth";
 import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 import useCompanies from "hooks/useCompanies";
+import CompanyItem from "components/CompanyItem/CompanyItem";
 
 function Companies() {
   const { roles } = useAuth();
@@ -35,11 +36,7 @@ function Companies() {
           {items.map((item) => (
             <a href={"http://localhost:3000/company/" + item.uuid}>
               <hr></hr>
-              <ol>
-                <li>{item.name}</li>
-                <li>{item.description}</li>
-                <li>{item.address.city}</li>
-              </ol>
+              <CompanyItem company={item} />
               <hr></hr>
             </a>
           ))}

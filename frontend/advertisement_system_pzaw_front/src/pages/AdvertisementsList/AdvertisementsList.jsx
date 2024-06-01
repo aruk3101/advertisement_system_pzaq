@@ -1,3 +1,4 @@
+import AdvertisementItem from "components/AdvertisementItem/AdvertisementItem";
 import "./AdvertisementsList.css";
 
 import useAdvertisements from "hooks/useAdvertisements";
@@ -15,14 +16,7 @@ const AdvertisementsList = () => {
         {items.map((item) => (
           <a href={"http://localhost:3000/advertisement/" + item.uuid}>
             <hr></hr>
-            <ol>
-              <li>{item.company.name}</li>
-              <li>{item.company.address.city}</li>
-              <li>{item.position}</li>
-              <li>
-                {item.salaryFrom} - {item.salaryTo}
-              </li>
-            </ol>
+            <AdvertisementItem advertisement={item} />
             <hr></hr>
           </a>
         ))}
