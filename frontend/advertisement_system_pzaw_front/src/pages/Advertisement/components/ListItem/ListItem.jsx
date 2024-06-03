@@ -11,7 +11,7 @@ export default function ListItem({
   const { roles } = useAuth();
   return (
     <div className="d-flex m-2 align-items-center container">
-      <div className="row">
+      <div className="row w-100">
         <div className="col-10">
           <span className="me-2 m-1">{svg}</span>
           <span className="text-black">{text}</span>
