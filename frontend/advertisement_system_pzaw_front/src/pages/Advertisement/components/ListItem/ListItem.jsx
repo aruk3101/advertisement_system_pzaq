@@ -17,7 +17,7 @@ export default function ListItem({
           <span className="text-black">{text}</span>
         </div>
         <div className="col-2">
-          {roles.includes("ROLE_ADMIN") ? (
+          {roles != null && roles.includes("ROLE_ADMIN") ? (
             <DeleteButton
               variant={variant}
               uuid={uuid}

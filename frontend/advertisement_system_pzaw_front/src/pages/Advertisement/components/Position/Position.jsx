@@ -7,6 +7,7 @@ import { EditPopupTrigger } from "components/EditPopup/EditPopup";
 
 export default function Position({ advertisement, refreshMethod = null }) {
   const { roles } = useAuth();
+  console.log(roles);
   return (
     <Card
       header={advertisement.position}
@@ -340,7 +341,7 @@ export default function Position({ advertisement, refreshMethod = null }) {
             />
           </div>
         </div>
-        {roles.includes("ROLE_ADMIN") ? (
+        {roles != null && roles.includes("ROLE_ADMIN") ? (
           <div className="row">
             <EditPopupTrigger
               variant="advertisement"

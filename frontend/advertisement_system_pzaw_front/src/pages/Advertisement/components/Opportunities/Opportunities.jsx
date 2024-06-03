@@ -52,7 +52,7 @@ export default function Opportunities({
           />
         );
       })}
-      {roles.includes("ROLE_ADMIN") ? (
+      {roles != null && roles.includes("ROLE_ADMIN") ? (
         <EditPopupTrigger
           variant="opportunity"
           secondaryUuid={advertisementUuid}

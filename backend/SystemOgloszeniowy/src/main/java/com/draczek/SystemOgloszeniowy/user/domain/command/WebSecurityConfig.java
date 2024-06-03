@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -41,6 +42,11 @@ class WebSecurityConfig {
       "/v3/api-docs*",
       "/v3/api-docs/**",
       "/webjars/**"
+  };
+
+  private static final String[] GET_AUTH_WHITELIST = {
+      "/api/companies/**",
+      "/api/advertisements/**",
   };
 
   private final SearchUserDetailsUseCase userDetailsService;
@@ -105,7 +111,9 @@ class WebSecurityConfig {
     http.cors().and().csrf().disable()
         .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
+        .authorizeRequests()
+        .antMatchers(AUTH_WHITELIST).permitAll()
+        .antMatchers(HttpMethod.GET, GET_AUTH_WHITELIST).permitAll()
         .anyRequest().authenticated();
     http.authenticationProvider(authenticationProvider());
     http.addFilterBefore(authenticationJwtTokenFilter(),

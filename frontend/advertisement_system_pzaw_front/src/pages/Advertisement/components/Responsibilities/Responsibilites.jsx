@@ -35,7 +35,7 @@ export default function Responsibilities({
           />
         );
       })}
-      {roles.includes("ROLE_ADMIN") ? (
+      {roles != null && roles.includes("ROLE_ADMIN") ? (
         <EditPopupTrigger
           variant="responsibility"
           secondaryUuid={advertisementUuid}

@@ -77,7 +77,7 @@ export default function Info({ company, refreshMethod = null }) {
         {company.address.apartmentNumber ?? company.address.apartmentNumber}
       </span>
 
-      {roles.includes("ROLE_ADMIN") ? (
+      {roles != null && roles.includes("ROLE_ADMIN") ? (
         <EditPopupTrigger
           variant="company"
           element={company}

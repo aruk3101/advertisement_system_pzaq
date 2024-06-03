@@ -33,7 +33,6 @@ public class AdvertisementController {
   @GetMapping("")
   @Operation(summary = "Usługa do pobierania listy dostepnych w systemie"
       + " ogłoszeń")
-  @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
   @ResponseStatus(HttpStatus.OK)
   public Page<AdvertisementDto> searchAdvertisements(
       Pageable pageable) {
@@ -42,7 +41,6 @@ public class AdvertisementController {
 
   @GetMapping("/{uuid}")
   @Operation(summary = "Usługa do pobierania ogłoszenia po jego UUID")
-  @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
   @ResponseStatus(HttpStatus.OK)
   public AdvertisementDto searchAdvertisements(@PathVariable UUID uuid) {
     return advertisementFacade.get(uuid);

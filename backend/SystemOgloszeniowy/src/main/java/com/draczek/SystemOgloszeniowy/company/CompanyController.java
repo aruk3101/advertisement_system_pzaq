@@ -34,7 +34,6 @@ public class CompanyController {
 
   @GetMapping("/{uuid}")
   @Operation(summary = "Usługa do pobierania przedsiębiorstw po UUID.")
-  @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
   @ResponseStatus(HttpStatus.OK)
   public CompanyDto searchCompanies(@PathVariable(name = "uuid") UUID uuid) {
     return companyFacade.get(uuid);

@@ -60,7 +60,7 @@ export default function Requirements({
           />
         );
       })}
-      {roles.includes("ROLE_ADMIN") ? (
+      {roles != null && roles.includes("ROLE_ADMIN") ? (
         <EditPopupTrigger
           variant="requirement"
           secondaryUuid={advertisementUuid}

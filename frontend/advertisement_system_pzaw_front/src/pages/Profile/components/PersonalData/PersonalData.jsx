@@ -51,7 +51,11 @@ export default function PersonalData() {
           </svg>
         }
         aria_label="BirthDate"
-        value={user.account.birthDate.slice(0, 10)}
+        value={
+          user.account.birthDate == null
+            ? "Brak"
+            : user.account.birthDate.slice(0, 10)
+        }
       />
     </Card>
   );
